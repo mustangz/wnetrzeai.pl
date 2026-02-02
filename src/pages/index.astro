@@ -1,0 +1,383 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="StagingAI - Urządź mieszkanie w 30 sekund z AI">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-darker/90 backdrop-blur-sm border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-primary">StagingAI</a>
+      <a href="#waitlist" class="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2 rounded-lg transition-colors">
+        Dołącz do waitlisty
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center pt-20 pb-16 px-6">
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            Puste mieszkanie →<br/>
+            <span class="text-primary">Urządzone w 30 sekund</span>
+          </h1>
+          <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+            AI Virtual Staging dla agentów nieruchomości. Wrzuć zdjęcie pustego wnętrza, 
+            a sztuczna inteligencja doda meble i dekoracje.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#waitlist" class="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors text-center">
+              🚀 Zapisz się na listę
+            </a>
+            <a href="#jak-dziala" class="border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors text-center">
+              Jak to działa?
+            </a>
+          </div>
+        </div>
+        
+        <!-- Before/After Visual -->
+        <div class="relative">
+          <div class="bg-dark rounded-2xl p-4 border border-white/10">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="relative">
+                <div class="aspect-[4/3] bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div class="text-center p-4">
+                    <div class="text-6xl mb-2">🏠</div>
+                    <p class="text-gray-500 text-sm">Puste wnętrze</p>
+                  </div>
+                </div>
+                <span class="absolute top-2 left-2 bg-red-500/90 text-white text-xs font-semibold px-2 py-1 rounded">PRZED</span>
+              </div>
+              <div class="relative">
+                <div class="aspect-[4/3] bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div class="text-center p-4">
+                    <div class="text-6xl mb-2">🛋️</div>
+                    <p class="text-gray-400 text-sm">Urządzone przez AI</p>
+                  </div>
+                </div>
+                <span class="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded">PO</span>
+              </div>
+            </div>
+            <p class="text-center text-gray-500 text-sm mt-4">⚡ Transformacja w 30 sekund</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-20 px-6 bg-dark">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Puste mieszkania sprzedają się <span class="text-red-400">wolniej</span> i <span class="text-red-400">taniej</span>
+      </h2>
+      <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+        Kupujący nie potrafią wyobrazić sobie potencjału pustej przestrzeni. 
+        Scrollują dalej, zanim zdążysz powiedzieć "świetna lokalizacja".
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <div class="text-4xl mb-4">😴</div>
+          <h3 class="font-semibold mb-2">Mniej zapytań</h3>
+          <p class="text-gray-400 text-sm">Puste zdjęcia nie przyciągają uwagi w ogłoszeniach</p>
+        </div>
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <div class="text-4xl mb-4">📉</div>
+          <h3 class="font-semibold mb-2">Dłuższy czas sprzedaży</h3>
+          <p class="text-gray-400 text-sm">Oferty z pustymi zdjęciami wiszą tygodniami dłużej</p>
+        </div>
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <div class="text-4xl mb-4">💸</div>
+          <h3 class="font-semibold mb-2">Niższa cena końcowa</h3>
+          <p class="text-gray-400 text-sm">Kupujący negocjują ostrzej przy pustych nieruchomościach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Rozwiązanie: <span class="text-primary">AI Virtual Staging</span>
+      </h2>
+      <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+        Wrzuć zdjęcie pustego wnętrza. AI doda meble, dekoracje i oświetlenie. 
+        Pobierz gotowe zdjęcie w jakości HD.
+      </p>
+      
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-lg">
+        <div class="flex items-center gap-3 bg-dark px-6 py-4 rounded-xl">
+          <span class="text-3xl">📸</span>
+          <span>Wrzuć zdjęcie</span>
+        </div>
+        <span class="text-primary text-2xl hidden md:block">→</span>
+        <span class="text-primary text-2xl md:hidden">↓</span>
+        <div class="flex items-center gap-3 bg-dark px-6 py-4 rounded-xl">
+          <span class="text-3xl">🤖</span>
+          <span>AI dodaje meble</span>
+        </div>
+        <span class="text-primary text-2xl hidden md:block">→</span>
+        <span class="text-primary text-2xl md:hidden">↓</span>
+        <div class="flex items-center gap-3 bg-dark px-6 py-4 rounded-xl">
+          <span class="text-3xl">✨</span>
+          <span>Pobierz gotowe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 px-6 bg-gradient-to-r from-primary/10 to-accent/10">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+        Virtual staging <span class="text-primary">działa</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-dark/50 backdrop-blur p-8 rounded-2xl border border-white/10 text-center">
+          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">87%</div>
+          <p class="text-xl text-gray-300">szybsza sprzedaż</p>
+          <p class="text-sm text-gray-500 mt-2">w porównaniu do pustych zdjęć</p>
+        </div>
+        <div class="bg-dark/50 backdrop-blur p-8 rounded-2xl border border-white/10 text-center">
+          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">+15%</div>
+          <p class="text-xl text-gray-300">wyższa cena finalna</p>
+          <p class="text-sm text-gray-500 mt-2">średnio przy nieruchomościach ze stagingiem</p>
+        </div>
+      </div>
+      
+      <p class="text-center text-gray-500 text-sm mt-8">
+        * Na podstawie badań NAR (National Association of Realtors) i Real Estate Staging Association
+      </p>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="jak-dziala" class="py-20 px-6 bg-dark">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+        Jak to działa?
+      </h2>
+      <p class="text-xl text-gray-400 mb-12 text-center">
+        3 proste kroki. Bez instalacji, bez komplikacji.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-4xl">📤</span>
+          </div>
+          <div class="text-primary font-bold text-sm mb-2">KROK 1</div>
+          <h3 class="text-xl font-semibold mb-3">Wgraj zdjęcie</h3>
+          <p class="text-gray-400">Zrób zdjęcie pustego pokoju telefonem lub aparatem. Wgraj do aplikacji.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-4xl">🎨</span>
+          </div>
+          <div class="text-primary font-bold text-sm mb-2">KROK 2</div>
+          <h3 class="text-xl font-semibold mb-3">Wybierz styl</h3>
+          <p class="text-gray-400">Nowoczesny, klasyczny, skandynawski? Wybierz styl mebli i dekoracji.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-4xl">⬇️</span>
+          </div>
+          <div class="text-primary font-bold text-sm mb-2">KROK 3</div>
+          <h3 class="text-xl font-semibold mb-3">Pobierz wynik</h3>
+          <p class="text-gray-400">W 30 sekund otrzymujesz profesjonalne zdjęcie gotowe do publikacji.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Prosty cennik
+      </h2>
+      <p class="text-xl text-gray-400 mb-12">
+        Bez ukrytych opłat. Płać za to, czego używasz.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+        <div class="bg-dark p-8 rounded-2xl border border-white/10">
+          <h3 class="text-xl font-semibold mb-2">Pay as you go</h3>
+          <div class="text-4xl font-extrabold text-primary mb-4">49 PLN<span class="text-lg text-gray-400 font-normal">/zdjęcie</span></div>
+          <ul class="text-left text-gray-400 space-y-3">
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> Bez abonamentu
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> Płacisz gdy używasz
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> Idealne na start
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border border-primary/30 relative">
+          <span class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">POPULARNE</span>
+          <h3 class="text-xl font-semibold mb-2">Abonament Pro</h3>
+          <div class="text-4xl font-extrabold text-primary mb-4">199 PLN<span class="text-lg text-gray-400 font-normal">/mies</span></div>
+          <ul class="text-left text-gray-400 space-y-3">
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> 10 zdjęć miesięcznie
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> Priorytetowa kolejka
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary">✓</span> Oszczędzasz 50%
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <p class="text-gray-500 text-sm mt-8">
+        * Ceny mogą ulec zmianie. Early birds dostaną zniżkę 30%.
+      </p>
+    </div>
+  </section>
+
+  <!-- Waitlist Section -->
+  <section id="waitlist" class="py-20 px-6 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        🚀 Bądź pierwszy
+      </h2>
+      <p class="text-xl text-gray-400 mb-8">
+        Zapisz się na listę i otrzymaj <span class="text-primary font-semibold">30% zniżki</span> na start + darmowe testowe zdjęcie.
+      </p>
+      
+      <form 
+        action="https://formspree.io/f/xyzyvvpp" 
+        method="POST"
+        class="space-y-4"
+      >
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Twój email" 
+          required
+          class="w-full px-6 py-4 bg-darker border border-white/20 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors text-lg"
+        />
+        <input 
+          type="text" 
+          name="company" 
+          placeholder="Nazwa biura nieruchomości (opcjonalnie)"
+          class="w-full px-6 py-4 bg-darker border border-white/20 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors text-lg"
+        />
+        <button 
+          type="submit"
+          class="w-full bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors"
+        >
+          Zapisz mnie na listę →
+        </button>
+      </form>
+      
+      <p class="text-gray-500 text-sm mt-6">
+        🔒 Bez spamu. Odezwiemy się tylko gdy produkt będzie gotowy.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 bg-dark">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+        Często zadawane pytania
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
+            <span class="text-primary">❓</span>
+            Czy to jest legalne?
+          </h3>
+          <p class="text-gray-400">
+            Tak! Virtual staging jest powszechnie stosowany na rynku nieruchomości. 
+            Ważne jest oznaczenie zdjęć jako "wizualizacja" lub "virtual staging" w ogłoszeniu, 
+            co jest standardową praktyką.
+          </p>
+        </div>
+        
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
+            <span class="text-primary">❓</span>
+            Jak realistycznie wyglądają efekty?
+          </h3>
+          <p class="text-gray-400">
+            Bardzo realistycznie. Używamy najnowszych modeli AI trenowanych na milionach 
+            profesjonalnych zdjęć wnętrz. Meble i dekoracje wyglądają naturalnie, 
+            z prawidłowymi cieniami i perspektywą.
+          </p>
+        </div>
+        
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
+            <span class="text-primary">❓</span>
+            Ile trwa generowanie zdjęcia?
+          </h3>
+          <p class="text-gray-400">
+            Średnio 30 sekund. W godzinach szczytu może to być do 2 minut. 
+            Otrzymasz powiadomienie email gdy zdjęcie będzie gotowe.
+          </p>
+        </div>
+        
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
+            <span class="text-primary">❓</span>
+            Jaka jakość zdjęcia jest potrzebna?
+          </h3>
+          <p class="text-gray-400">
+            Wystarczy zdjęcie z telefonu w dobrej jakości (min. 1920x1080). 
+            Im lepsze źródło, tym lepszy efekt końcowy. 
+            Unikaj rozmytych zdjęć i złego oświetlenia.
+          </p>
+        </div>
+        
+        <div class="bg-darker p-6 rounded-xl border border-white/10">
+          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
+            <span class="text-primary">❓</span>
+            Czy mogę wybrać styl mebli?
+          </h3>
+          <p class="text-gray-400">
+            Tak! Oferujemy kilka popularnych stylów: nowoczesny, skandynawski, klasyczny, 
+            industrialny i minimalistyczny. Możesz też określić typ pomieszczenia 
+            (salon, sypialnia, biuro).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+          <a href="/" class="text-2xl font-bold text-primary">StagingAI</a>
+          <p class="text-gray-500 text-sm mt-1">AI Virtual Staging dla agentów nieruchomości</p>
+        </div>
+        
+        <div class="flex items-center gap-6 text-gray-400 text-sm">
+          <a href="mailto:kontakt@stagingai.pl" class="hover:text-white transition-colors">
+            kontakt@stagingai.pl
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <p>© 2025 StagingAI. Wszystkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
