@@ -622,11 +622,26 @@ import Layout from '../layouts/Layout.astro';
         <!-- PRO Plan - POLECANY -->
         <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border-2 border-primary relative">
           <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full">
-            🔥 POLECANY
+            🔥 EARLY BIRD -30%
           </span>
           <h3 class="text-2xl font-bold mb-2 mt-2">PRO</h3>
-          <div class="text-5xl font-extrabold text-primary mb-2">199 <span class="text-lg text-gray-400 font-normal">PLN/mies</span></div>
-          <p class="text-sm text-gray-500 mb-6">tylko 9,95 PLN za render</p>
+          <div class="flex items-baseline justify-center gap-3 mb-2">
+            <span class="text-2xl text-gray-500 line-through">285 PLN</span>
+            <span class="text-5xl font-extrabold text-primary">199</span>
+            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
+          </div>
+          <p class="text-sm text-gray-500 mb-2">tylko 9,95 PLN za render</p>
+          
+          <!-- Countdown Timer -->
+          <div class="bg-dark/50 rounded-lg p-3 mb-6">
+            <p class="text-xs text-gray-400 mb-1">Oferta kończy się za:</p>
+            <div id="countdown" class="flex justify-center gap-2 text-lg font-bold">
+              <div class="bg-dark px-3 py-1 rounded"><span id="days">12</span><span class="text-xs text-gray-500 ml-1">dni</span></div>
+              <div class="bg-dark px-3 py-1 rounded"><span id="hours">00</span><span class="text-xs text-gray-500 ml-1">h</span></div>
+              <div class="bg-dark px-3 py-1 rounded"><span id="minutes">00</span><span class="text-xs text-gray-500 ml-1">m</span></div>
+              <div class="bg-dark px-3 py-1 rounded"><span id="seconds">00</span><span class="text-xs text-gray-500 ml-1">s</span></div>
+            </div>
+          </div>
           
           <ul class="text-left text-gray-300 space-y-4 mb-8">
             <li class="flex items-start gap-3">
@@ -905,5 +920,30 @@ import Layout from '../layouts/Layout.astro';
     
     priceInput.addEventListener('input', calculateROI);
     calculateROI();
+    
+    // Countdown Timer - ends Feb 14, 2026 23:59:59
+    function updateCountdown() {
+      const endDate = new Date('2026-02-14T23:59:59').getTime();
+      const now = new Date().getTime();
+      const distance = endDate - now;
+      
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<span class="text-red-400">Oferta wygasła!</span>';
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </Layout>
