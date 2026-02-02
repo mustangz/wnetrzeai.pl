@@ -13,8 +13,20 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </nav>
 
+  <!-- FREE TRIAL BANNER - ATTRACTION -->
+  <div class="fixed top-[73px] left-0 right-0 z-40 bg-gradient-to-r from-primary to-accent py-3 px-6">
+    <div class="max-w-6xl mx-auto flex items-center justify-center gap-4 flex-wrap">
+      <span class="text-2xl">🎁</span>
+      <span class="font-bold text-white">TESTUJ ZA DARMO</span>
+      <span class="text-white/90">1 darmowy render dziennie — bez karty, bez zobowiązań</span>
+      <a href="#waitlist" class="bg-white text-primary font-semibold px-4 py-1.5 rounded-lg hover:bg-white/90 transition-colors text-sm">
+        Wypróbuj teraz →
+      </a>
+    </div>
+  </div>
+
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center pt-20 pb-16 px-6">
+  <section class="min-h-screen flex items-center pt-36 pb-16 px-6">
     <div class="max-w-6xl mx-auto w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -63,6 +75,38 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <p class="text-center text-gray-500 text-sm mt-4">⚡ Transformacja w 30 sekund</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCHOR PRICING - Cost Comparison -->
+  <section class="py-16 px-6 bg-gradient-to-r from-red-500/10 via-dark to-primary/10">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+        Ile <span class="text-red-400">przepłacasz</span> za staging?
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="bg-dark/80 p-8 rounded-2xl border border-red-500/30 text-center">
+          <p class="text-gray-400 uppercase tracking-wider text-sm mb-2">Tradycyjny staging</p>
+          <div class="text-5xl md:text-6xl font-extrabold text-red-400 mb-2">3 000 - 8 000</div>
+          <p class="text-2xl text-gray-400">PLN za mieszkanie</p>
+          <div class="mt-4 text-sm text-gray-500">+ 3-7 dni oczekiwania</div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border border-primary/50 text-center relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-4 py-1 rounded-full">STAGINGAI</span>
+          <p class="text-gray-400 uppercase tracking-wider text-sm mb-2 mt-2">Virtual staging AI</p>
+          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">49</div>
+          <p class="text-2xl text-gray-400">PLN za zdjęcie</p>
+          <div class="mt-4 text-sm text-primary">⚡ Gotowe w 30 sekund</div>
+        </div>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <div class="inline-block bg-primary/20 border border-primary/30 rounded-xl px-8 py-4">
+          <span class="text-2xl md:text-3xl font-bold text-primary">Oszczędzasz do 99%</span>
         </div>
       </div>
     </div>
@@ -449,66 +493,151 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Pricing Section -->
+  <!-- NEW PRICING SECTION - Decoy Offer -->
   <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-5xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Prosty cennik
+        Wybierz swój plan
       </h2>
       <p class="text-xl text-gray-400 mb-12">
-        Bez ukrytych opłat. Płać za to, czego używasz.
+        Zacznij za darmo lub odblokuj pełną moc
       </p>
       
-      <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <!-- FREE Plan -->
         <div class="bg-dark p-8 rounded-2xl border border-white/10">
-          <h3 class="text-xl font-semibold mb-2">Pay as you go</h3>
-          <div class="text-4xl font-extrabold text-primary mb-4">49 PLN<span class="text-lg text-gray-400 font-normal">/zdjęcie</span></div>
-          <ul class="text-left text-gray-400 space-y-3">
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> Bez abonamentu
+          <h3 class="text-2xl font-bold mb-2">FREE</h3>
+          <div class="text-5xl font-extrabold text-white mb-6">0 <span class="text-lg text-gray-400 font-normal">PLN</span></div>
+          
+          <ul class="text-left text-gray-300 space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span>1 render dziennie</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> Płacisz gdy używasz
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span>Standardowa kolejka</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> Idealne na start
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 text-lg">✗</span>
+              <span class="text-gray-500">Watermark na zdjęciu</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 text-lg">✗</span>
+              <span class="text-gray-500">Brak gwarancji poprawek</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 text-lg">✗</span>
+              <span class="text-gray-500">Tylko podstawowe style (3)</span>
             </li>
           </ul>
+          
+          <a href="#waitlist" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
+            Zacznij za darmo
+          </a>
         </div>
         
-        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border border-primary/30 relative">
-          <span class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">POPULARNE</span>
-          <h3 class="text-xl font-semibold mb-2">Abonament Pro</h3>
-          <div class="text-4xl font-extrabold text-primary mb-4">199 PLN<span class="text-lg text-gray-400 font-normal">/mies</span></div>
-          <ul class="text-left text-gray-400 space-y-3">
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> 10 zdjęć miesięcznie
+        <!-- PRO Plan - POLECANY -->
+        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border-2 border-primary relative">
+          <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full">
+            🔥 POLECANY
+          </span>
+          <h3 class="text-2xl font-bold mb-2 mt-2">PRO</h3>
+          <div class="text-5xl font-extrabold text-primary mb-2">199 <span class="text-lg text-gray-400 font-normal">PLN/mies</span></div>
+          <p class="text-sm text-gray-500 mb-6">tylko 9,95 PLN za render</p>
+          
+          <ul class="text-left text-gray-300 space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">20 renderów</strong> miesięcznie</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> Priorytetowa kolejka
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Priorytetowa kolejka</strong></span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary">✓</span> Oszczędzasz 50%
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Bez watermarku</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Poprawiamy do skutku</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Wszystkie style (15+)</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Wsparcie priorytetowe</strong></span>
             </li>
           </ul>
+          
+          <a href="#waitlist" class="block w-full bg-primary hover:bg-primary-dark text-white font-bold px-6 py-4 rounded-xl transition-colors text-center">
+            Wybierz Pro →
+          </a>
+          
+          <!-- CONTINUITY HINT -->
+          <p class="text-xs text-gray-500 mt-4 text-center">
+            * Zostań na 12 miesięcy → 2 miesiące gratis
+          </p>
         </div>
       </div>
-      
-      <p class="text-gray-500 text-sm mt-8">
-        * Ceny mogą ulec zmianie. Early birds dostaną zniżkę 30%.
-      </p>
     </div>
   </section>
 
-  <!-- Waitlist Section -->
+  <!-- GWARANCJA SECTION -->
+  <section class="py-16 px-6 bg-gradient-to-r from-primary/5 via-dark to-accent/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="bg-darker p-8 md:p-12 rounded-2xl border border-primary/30">
+        <div class="text-6xl mb-6">🛡️</div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          GWARANCJA <span class="text-primary">14 DNI</span>
+        </h2>
+        <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+          Testuj Pro przez 14 dni. Jeśli nie spodoba Ci się <strong class="text-white">ŻADEN</strong> wynik 
+          — zwracamy <strong class="text-primary">100%</strong> bez pytań.
+        </p>
+        <div class="inline-block bg-primary/20 border border-primary/30 rounded-xl px-8 py-4">
+          <span class="text-xl font-bold text-primary">Zero ryzyka. Obietnica.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist Section - URGENCY/SCARCITY -->
   <section id="waitlist" class="py-20 px-6 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
     <div class="max-w-xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        🚀 Bądź pierwszy
+        🚀 Dołącz do beta — <span class="text-primary">zostało 47 miejsc</span>
       </h2>
-      <p class="text-xl text-gray-400 mb-4">
-        Zapisz się na listę i otrzymaj <span class="text-primary font-semibold">30% zniżki</span> na start + darmowe testowe zdjęcie.
-      </p>
+      
+      <!-- Benefits list -->
+      <div class="bg-darker/80 p-6 rounded-xl border border-primary/20 mb-8 text-left">
+        <p class="text-lg font-semibold text-white mb-4">Early birds dostają:</p>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3">
+            <span class="text-primary text-xl">✅</span>
+            <span class="text-gray-300"><strong class="text-white">30% zniżki</strong> na zawsze</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-primary text-xl">✅</span>
+            <span class="text-gray-300"><strong class="text-white">5 darmowych renderów</strong> na start <span class="text-primary">(warte 245 PLN)</span></span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-primary text-xl">✅</span>
+            <span class="text-gray-300"><strong class="text-white">Dostęp przed wszystkimi</strong></span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Urgency Banner -->
+      <div class="bg-red-500/20 border border-red-500/30 rounded-xl p-4 mb-8">
+        <p class="text-lg">
+          <span class="text-2xl">⏰</span> 
+          <span class="font-bold text-red-400">Oferta kończy się 14 lutego</span>
+        </p>
+      </div>
       
       <!-- Social Proof Counter -->
       <div class="inline-flex items-center gap-2 bg-dark/50 px-4 py-2 rounded-full border border-white/10 mb-8">
@@ -544,7 +673,7 @@ import Layout from '../layouts/Layout.astro';
           type="submit"
           class="w-full bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors"
         >
-          Zapisz mnie na listę →
+          🚀 Zarezerwuj miejsce →
         </button>
       </form>
       
