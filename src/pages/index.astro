@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="StagingAI - Urządź mieszkanie w 30 sekund z AI">
+<Layout title="WnętrzeAI - Urządź mieszkanie w 30 sekund z AI">
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-darker/90 backdrop-blur-sm border-b border-white/10">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold text-primary">StagingAI</a>
+      <a href="/" class="text-2xl font-bold text-primary">WnętrzeAI</a>
       <a href="#waitlist" class="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2 rounded-lg transition-colors">
         Dołącz do waitlisty
       </a>
@@ -330,7 +330,7 @@ import Layout from '../layouts/Layout.astro';
               <td class="p-4">
                 <div class="flex items-center gap-2">
                   <span class="text-xl">🚀</span>
-                  <span class="font-semibold text-primary">StagingAI</span>
+                  <span class="font-semibold text-primary">WnętrzeAI</span>
                 </div>
               </td>
               <td class="text-center p-4 font-semibold text-primary">30 sek</td>
@@ -375,7 +375,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       
       <p class="text-center text-gray-500 text-sm mt-6">
-        * StagingAI łączy szybkość AI z jakością dedykowanych rozwiązań do virtual stagingu
+        * WnętrzeAI łączy szybkość AI z jakością dedykowanych rozwiązań do virtual stagingu
       </p>
     </div>
   </section>
@@ -395,7 +395,7 @@ import Layout from '../layouts/Layout.astro';
           <thead>
             <tr class="border-b border-white/10 bg-darker">
               <th class="text-left p-4 font-semibold">Funkcja</th>
-              <th class="text-center p-4 font-semibold text-primary">StagingAI</th>
+              <th class="text-center p-4 font-semibold text-primary">WnętrzeAI</th>
               <th class="text-center p-4 font-semibold text-gray-400">ChatGPT/DALL-E</th>
               <th class="text-center p-4 font-semibold text-gray-400">Midjourney</th>
             </tr>
@@ -456,7 +456,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="mt-8 bg-darker p-6 rounded-xl border border-white/10">
         <p class="text-gray-400 text-center">
           <span class="text-primary font-semibold">Kluczowa różnica:</span> ChatGPT generuje NOWY pokój od zera. 
-          StagingAI bierze TWOJE zdjęcie i dodaje meble zachowując ściany, okna i proporcje.
+          WnętrzeAI bierze TWOJE zdjęcie i dodaje meble zachowując ściany, okna i proporcje.
         </p>
       </div>
     </div>
@@ -575,78 +575,79 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- NEW PRICING SECTION - Decoy Offer -->
+  <!-- PRICING SECTION - 3 Plans like InteriorAI -->
   <section class="py-20 px-6">
-    <div class="max-w-5xl mx-auto text-center">
+    <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
         Wybierz swój plan
       </h2>
-      <p class="text-xl text-gray-400 mb-12">
+      <p class="text-xl text-gray-400 mb-8">
         Zacznij za darmo lub odblokuj pełną moc
       </p>
       
-      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-        <!-- FREE Plan -->
+      <!-- Billing Toggle -->
+      <div class="flex items-center justify-center gap-4 mb-12">
+        <span id="monthly-label" class="text-gray-400">Miesięcznie</span>
+        <button id="billing-toggle" class="relative w-16 h-8 bg-primary/30 rounded-full transition-colors" onclick="toggleBilling()">
+          <span id="toggle-knob" class="absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform"></span>
+        </button>
+        <span id="yearly-label" class="text-white font-semibold">Rocznie <span class="text-primary text-sm">(-20%)</span></span>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- STARTER Plan -->
         <div class="bg-dark p-8 rounded-2xl border border-white/10">
-          <h3 class="text-2xl font-bold mb-2">FREE</h3>
-          <div class="text-5xl font-extrabold text-white mb-6">0 <span class="text-lg text-gray-400 font-normal">PLN</span></div>
+          <h3 class="text-2xl font-bold mb-2">Starter</h3>
+          <div class="mb-1">
+            <span id="starter-price" class="text-5xl font-extrabold text-white">39</span>
+            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
+          </div>
+          <p class="text-sm text-gray-500 mb-6" id="starter-per-render">3,90 PLN za render</p>
           
-          <ul class="text-left text-gray-300 space-y-4 mb-8">
+          <ul class="text-left text-gray-300 space-y-3 mb-8">
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
-              <span>1 render dziennie</span>
+              <span><strong class="text-white">10 renderów</strong> miesięcznie</span>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
               <span>Standardowa kolejka</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-red-400 text-lg">✗</span>
-              <span class="text-gray-500">Watermark na zdjęciu</span>
+              <span class="text-primary text-lg">✓</span>
+              <span>Bez watermarku</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-red-400 text-lg">✗</span>
-              <span class="text-gray-500">Brak gwarancji poprawek</span>
+              <span class="text-primary text-lg">✓</span>
+              <span>8 stylów wnętrz</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-red-400 text-lg">✗</span>
-              <span class="text-gray-500">Tylko podstawowe style (3)</span>
+              <span class="text-gray-500 text-lg">✗</span>
+              <span class="text-gray-500">Brak poprawek</span>
             </li>
           </ul>
           
-          <a href="#waitlist" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
-            Zacznij za darmo
-          </a>
+          <button onclick="openCheckout('starter')" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
+            Wybierz Starter
+          </button>
         </div>
         
         <!-- PRO Plan - POLECANY -->
         <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border-2 border-primary relative">
           <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full">
-            🔥 EARLY BIRD -30%
+            🔥 NAJPOPULARNIEJSZY
           </span>
-          <h3 class="text-2xl font-bold mb-2 mt-2">PRO</h3>
-          <div class="flex items-baseline justify-center gap-3 mb-2">
-            <span class="text-2xl text-gray-500 line-through">285 PLN</span>
-            <span class="text-5xl font-extrabold text-primary">199</span>
+          <h3 class="text-2xl font-bold mb-2 mt-2">Pro</h3>
+          <div class="mb-1">
+            <span id="pro-price" class="text-5xl font-extrabold text-primary">79</span>
             <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
           </div>
-          <p class="text-sm text-gray-500 mb-2">tylko 9,95 PLN za render</p>
+          <p class="text-sm text-gray-500 mb-6" id="pro-per-render">1,58 PLN za render</p>
           
-          <!-- Countdown Timer -->
-          <div class="bg-dark/50 rounded-lg p-3 mb-6">
-            <p class="text-xs text-gray-400 mb-1">Oferta kończy się za:</p>
-            <div id="countdown" class="flex justify-center gap-2 text-lg font-bold">
-              <div class="bg-dark px-3 py-1 rounded"><span id="days">12</span><span class="text-xs text-gray-500 ml-1">dni</span></div>
-              <div class="bg-dark px-3 py-1 rounded"><span id="hours">00</span><span class="text-xs text-gray-500 ml-1">h</span></div>
-              <div class="bg-dark px-3 py-1 rounded"><span id="minutes">00</span><span class="text-xs text-gray-500 ml-1">m</span></div>
-              <div class="bg-dark px-3 py-1 rounded"><span id="seconds">00</span><span class="text-xs text-gray-500 ml-1">s</span></div>
-            </div>
-          </div>
-          
-          <ul class="text-left text-gray-300 space-y-4 mb-8">
+          <ul class="text-left text-gray-300 space-y-3 mb-8">
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">20 renderów</strong> miesięcznie</span>
+              <span><strong class="text-white">50 renderów</strong> miesięcznie</span>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
@@ -654,11 +655,7 @@ import Layout from '../layouts/Layout.astro';
             </li>
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Bez watermarku</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Poprawiamy do skutku</strong></span>
+              <span>Bez watermarku</span>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
@@ -666,19 +663,75 @@ import Layout from '../layouts/Layout.astro';
             </li>
             <li class="flex items-start gap-3">
               <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Wsparcie priorytetowe</strong></span>
+              <span><strong class="text-white">1 poprawka na render</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span>Wsparcie email</span>
             </li>
           </ul>
           
-          <button onclick="openCheckout()" class="block w-full bg-primary hover:bg-primary-dark text-white font-bold px-6 py-4 rounded-xl transition-colors text-center cursor-pointer">
+          <button onclick="openCheckout('pro')" class="block w-full bg-primary hover:bg-primary-dark text-white font-bold px-6 py-4 rounded-xl transition-colors text-center cursor-pointer">
             Wybierz Pro →
           </button>
-          
-          <!-- CONTINUITY HINT -->
-          <p class="text-xs text-gray-500 mt-4 text-center">
-            * Zostań na 12 miesięcy → 2 miesiące gratis
-          </p>
         </div>
+        
+        <!-- AGENCY Plan -->
+        <div class="bg-dark p-8 rounded-2xl border border-white/10">
+          <h3 class="text-2xl font-bold mb-2">Agency</h3>
+          <div class="mb-1">
+            <span id="agency-price" class="text-5xl font-extrabold text-white">199</span>
+            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
+          </div>
+          <p class="text-sm text-gray-500 mb-6" id="agency-per-render">0,66 PLN za render</p>
+          
+          <ul class="text-left text-gray-300 space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">300 renderów</strong> miesięcznie</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Najszybsza kolejka</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span>Bez watermarku</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span>Wszystkie style (15+)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Nieograniczone poprawki</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Priorytetowe wsparcie</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-lg">✓</span>
+              <span><strong class="text-white">Faktura VAT</strong></span>
+            </li>
+          </ul>
+          
+          <button onclick="openCheckout('agency')" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
+            Wybierz Agency
+          </button>
+        </div>
+      </div>
+      
+      <!-- Social proof -->
+      <div class="mt-12 flex items-center justify-center gap-2">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
+          <div class="w-8 h-8 bg-accent/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👨</div>
+          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
+        </div>
+        <span class="text-sm text-gray-400">
+          <span class="font-semibold text-white">2,137+</span> agentów korzysta z WnętrzeAI
+        </span>
       </div>
     </div>
   </section>
@@ -879,19 +932,19 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-4xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
-          <a href="/" class="text-2xl font-bold text-primary">StagingAI</a>
+          <a href="/" class="text-2xl font-bold text-primary">WnętrzeAI</a>
           <p class="text-gray-500 text-sm mt-1">AI Virtual Staging dla agentów nieruchomości</p>
         </div>
         
         <div class="flex items-center gap-6 text-gray-400 text-sm">
-          <a href="mailto:kontakt@stagingai.pl" class="hover:text-white transition-colors">
-            kontakt@stagingai.pl
+          <a href="mailto:kontakt@wnetrzeai.pl" class="hover:text-white transition-colors">
+            kontakt@wnetrzeai.pl
           </a>
         </div>
       </div>
       
       <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-500 text-sm">
-        <p>© 2025 StagingAI. Wszystkie prawa zastrzeżone.</p>
+        <p>© 2025 WnętrzeAI. Wszystkie prawa zastrzeżone.</p>
       </div>
     </div>
   </footer>
@@ -911,7 +964,7 @@ import Layout from '../layouts/Layout.astro';
         
         <div class="bg-primary/10 border border-primary/30 rounded-xl p-4 mb-6">
           <div class="flex justify-between items-center">
-            <span class="text-gray-300">StagingAI PRO</span>
+            <span class="text-gray-300">WnętrzeAI PRO</span>
             <span class="text-xl font-bold text-primary">199 PLN/mies</span>
           </div>
         </div>
@@ -959,7 +1012,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="text-6xl mb-4">🚀</div>
           <h3 class="text-2xl font-bold mb-4">Prawie gotowe!</h3>
           <p class="text-gray-300 mb-6 leading-relaxed">
-            <strong class="text-primary">Nie pobraliśmy pieniędzy</strong> — StagingAI jest jeszcze w fazie beta.
+            <strong class="text-primary">Nie pobraliśmy pieniędzy</strong> — WnętrzeAI jest jeszcze w fazie beta.
           </p>
           <p class="text-gray-400 mb-6">
             Ale widzimy że jesteś zainteresowany! Zapisaliśmy Twój email — 
@@ -977,8 +1030,55 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 
-  <!-- ROI Calculator Script -->
+  <!-- Scripts -->
   <script>
+    // Pricing data
+    const pricing = {
+      monthly: { starter: 49, pro: 99, agency: 249 },
+      yearly: { starter: 39, pro: 79, agency: 199 }
+    };
+    const renders = { starter: 10, pro: 50, agency: 300 };
+    let isYearly = true;
+    let selectedPlan = 'pro';
+    
+    // Billing toggle
+    function toggleBilling() {
+      isYearly = !isYearly;
+      const toggle = document.getElementById('toggle-knob');
+      const monthlyLabel = document.getElementById('monthly-label');
+      const yearlyLabel = document.getElementById('yearly-label');
+      
+      if (isYearly) {
+        toggle.style.transform = 'translateX(32px)';
+        monthlyLabel.className = 'text-gray-400';
+        yearlyLabel.innerHTML = 'Rocznie <span class="text-primary text-sm">(-20%)</span>';
+        yearlyLabel.className = 'text-white font-semibold';
+      } else {
+        toggle.style.transform = 'translateX(0)';
+        monthlyLabel.className = 'text-white font-semibold';
+        yearlyLabel.innerHTML = 'Rocznie';
+        yearlyLabel.className = 'text-gray-400';
+      }
+      
+      updatePrices();
+    }
+    
+    function updatePrices() {
+      const prices = isYearly ? pricing.yearly : pricing.monthly;
+      
+      document.getElementById('starter-price').textContent = prices.starter;
+      document.getElementById('pro-price').textContent = prices.pro;
+      document.getElementById('agency-price').textContent = prices.agency;
+      
+      document.getElementById('starter-per-render').textContent = (prices.starter / renders.starter).toFixed(2).replace('.', ',') + ' PLN za render';
+      document.getElementById('pro-per-render').textContent = (prices.pro / renders.pro).toFixed(2).replace('.', ',') + ' PLN za render';
+      document.getElementById('agency-per-render').textContent = (prices.agency / renders.agency).toFixed(2).replace('.', ',') + ' PLN za render';
+    }
+    
+    // Initialize toggle position
+    document.getElementById('toggle-knob').style.transform = 'translateX(32px)';
+    
+    // ROI Calculator
     const priceInput = document.getElementById('price-input');
     const priceIncrease = document.getElementById('price-increase');
     const commission = document.getElementById('commission');
@@ -992,7 +1092,7 @@ import Layout from '../layouts/Layout.astro';
       const price = parseInt(priceInput.value) || 0;
       const increase = price * 0.15;
       const commissionValue = increase * 0.02;
-      const multiplier = Math.round(commissionValue / 49);
+      const multiplier = Math.round(commissionValue / 39);
       
       priceIncrease.textContent = '+' + formatPLN(increase);
       commission.textContent = '+' + formatPLN(commissionValue);
@@ -1002,45 +1102,28 @@ import Layout from '../layouts/Layout.astro';
     priceInput.addEventListener('input', calculateROI);
     calculateROI();
     
-    // Countdown Timer - ends Feb 14, 2026 23:59:59
-    function updateCountdown() {
-      const endDate = new Date('2026-02-14T23:59:59').getTime();
-      const now = new Date().getTime();
-      const distance = endDate - now;
+    // Fake Checkout Modal
+    function openCheckout(plan = 'pro') {
+      selectedPlan = plan;
+      const prices = isYearly ? pricing.yearly : pricing.monthly;
+      const price = prices[plan];
+      const planNames = { starter: 'Starter', pro: 'Pro', agency: 'Agency' };
       
-      if (distance < 0) {
-        document.getElementById('countdown').innerHTML = '<span class="text-red-400">Oferta wygasła!</span>';
-        return;
-      }
+      document.querySelector('#checkout-form h3').textContent = `Zamów ${planNames[plan]}`;
+      document.querySelector('#checkout-form .bg-primary\\/10 span:last-child').textContent = `${price} PLN/mies`;
+      document.querySelector('#checkout-form button[type="submit"]').textContent = `💳 Zapłać ${price} PLN`;
       
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    }
-    
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // Fake Checkout Modal (Pieter Levels Validation Hack)
-    function openCheckout() {
       document.getElementById('checkout-modal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      // Track: someone clicked "Buy"
+      
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'begin_checkout', { value: 199, currency: 'PLN' });
+        gtag('event', 'begin_checkout', { value: price, currency: 'PLN', plan: plan });
       }
     }
     
     function closeCheckout() {
       document.getElementById('checkout-modal').classList.add('hidden');
       document.body.style.overflow = '';
-      // Reset form
       document.getElementById('checkout-form').classList.remove('hidden');
       document.getElementById('checkout-success').classList.add('hidden');
     }
@@ -1049,8 +1132,9 @@ import Layout from '../layouts/Layout.astro';
       e.preventDefault();
       
       const email = this.querySelector('input[type="email"]').value;
+      const prices = isYearly ? pricing.yearly : pricing.monthly;
+      const price = prices[selectedPlan];
       
-      // Send to Formspree (same as waitlist)
       try {
         await fetch('https://formspree.io/f/xyzyvvpp', {
           method: 'POST',
@@ -1058,25 +1142,24 @@ import Layout from '../layouts/Layout.astro';
           body: JSON.stringify({ 
             email: email, 
             source: 'fake_checkout',
-            plan: 'PRO',
-            intent: 'would_pay_199'
+            plan: selectedPlan.toUpperCase(),
+            billing: isYearly ? 'yearly' : 'monthly',
+            price: price,
+            intent: `would_pay_${price}`
           })
         });
       } catch (err) {
         console.log('Form submission error:', err);
       }
       
-      // Track: someone tried to pay
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'purchase_intent', { value: 199, currency: 'PLN' });
+        gtag('event', 'purchase_intent', { value: price, currency: 'PLN', plan: selectedPlan });
       }
       
-      // Show success message
       document.getElementById('checkout-form').classList.add('hidden');
       document.getElementById('checkout-success').classList.remove('hidden');
     });
     
-    // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeCheckout();
     });
