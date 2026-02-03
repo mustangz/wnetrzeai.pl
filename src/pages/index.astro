@@ -2,805 +2,696 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="WnętrzeAI - Urządź mieszkanie w 30 sekund z AI">
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-darker/90 backdrop-blur-sm border-b border-white/10">
+<Layout>
+  <!-- ============================================
+       SECTION 1: NAVBAR
+       ============================================ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/[0.08]">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold text-primary">WnętrzeAI</a>
-      <a href="#waitlist" class="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2 rounded-lg transition-colors">
-        Dołącz do waitlisty
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+        </div>
+        <span class="text-xl font-bold tracking-tight">WnętrzeAI</span>
+      </a>
+      
+      <!-- CTA Only -->
+      <a href="#pricing" class="btn-primary text-sm">
+        Rozpocznij
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
       </a>
     </div>
   </nav>
 
-  <!-- FREE TRIAL BANNER - ATTRACTION -->
-  <div class="fixed top-[73px] left-0 right-0 z-40 bg-gradient-to-r from-primary to-accent py-3 px-6">
-    <div class="max-w-6xl mx-auto flex items-center justify-center gap-4 flex-wrap">
-      <span class="text-2xl">🎁</span>
-      <span class="font-bold text-white">TESTUJ ZA DARMO</span>
-      <span class="text-white/90">1 darmowy render dziennie — bez karty, bez zobowiązań</span>
-      <a href="#waitlist" class="bg-white text-primary font-semibold px-4 py-1.5 rounded-lg hover:bg-white/90 transition-colors text-sm">
-        Wypróbuj teraz →
-      </a>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center pt-36 pb-16 px-6">
-    <div class="max-w-6xl mx-auto w-full">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-            Puste mieszkanie →<br/>
-            <span class="text-primary">Urządzone w 30 sekund</span>
-          </h1>
-          <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-            AI Virtual Staging dla agentów nieruchomości. Wrzuć zdjęcie pustego wnętrza, 
-            a sztuczna inteligencja doda meble i dekoracje.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#waitlist" class="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors text-center">
-              🚀 Zapisz się na listę
-            </a>
-            <a href="#jak-dziala" class="border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors text-center">
-              Jak to działa?
-            </a>
+  <!-- ============================================
+       SECTION 2: HERO
+       ============================================ -->
+  <section class="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
+    <!-- Background Glow -->
+    <div class="hero-glow"></div>
+    
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Content -->
+        <div class="text-center lg:text-left animate-fade-in">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 badge badge-accent mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+            Oszczędź 99% kosztów stagingu
           </div>
-        </div>
-        
-        <!-- Before/After Visual with Real Images -->
-        <div class="relative">
-          <div class="bg-dark rounded-2xl p-4 border border-white/10">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="relative">
-                <div class="aspect-[4/3] rounded-lg overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" 
-                    alt="Pusty salon przed virtual stagingiem" 
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <span class="absolute top-2 left-2 bg-red-500/90 text-white text-xs font-semibold px-2 py-1 rounded">PRZED</span>
-              </div>
-              <div class="relative">
-                <div class="aspect-[4/3] rounded-lg overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" 
-                    alt="Salon urządzony przez AI - virtual staging" 
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <span class="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded">PO</span>
-              </div>
-            </div>
-            <p class="text-center text-gray-500 text-sm mt-4">⚡ Transformacja w 30 sekund</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ANCHOR PRICING - Cost Comparison -->
-  <section class="py-16 px-6 bg-gradient-to-r from-red-500/10 via-dark to-primary/10">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-        Ile <span class="text-red-400">przepłacasz</span> za staging?
-      </h2>
-      
-      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-        <div class="bg-dark/80 p-8 rounded-2xl border border-red-500/30 text-center">
-          <p class="text-gray-400 uppercase tracking-wider text-sm mb-2">Tradycyjny staging</p>
-          <div class="text-5xl md:text-6xl font-extrabold text-red-400 mb-2">3 000 - 8 000</div>
-          <p class="text-2xl text-gray-400">PLN za mieszkanie</p>
-          <div class="mt-4 text-sm text-gray-500">+ 3-7 dni oczekiwania</div>
-        </div>
-        
-        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border border-primary/50 text-center relative">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-4 py-1 rounded-full">STAGINGAI</span>
-          <p class="text-gray-400 uppercase tracking-wider text-sm mb-2 mt-2">Virtual staging AI</p>
-          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">49</div>
-          <p class="text-2xl text-gray-400">PLN za zdjęcie</p>
-          <div class="mt-4 text-sm text-primary">⚡ Gotowe w 30 sekund</div>
-        </div>
-      </div>
-      
-      <div class="mt-8 text-center">
-        <div class="inline-block bg-primary/20 border border-primary/30 rounded-xl px-8 py-4">
-          <span class="text-2xl md:text-3xl font-bold text-primary">Oszczędzasz do 99%</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem Section -->
-  <section class="py-20 px-6 bg-dark">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        Puste mieszkania sprzedają się <span class="text-red-400">wolniej</span> i <span class="text-red-400">taniej</span>
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 leading-relaxed">
-        Kupujący nie potrafią wyobrazić sobie potencjału pustej przestrzeni. 
-        Scrollują dalej, zanim zdążysz powiedzieć "świetna lokalizacja".
-      </p>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <div class="text-4xl mb-4">😴</div>
-          <h3 class="font-semibold mb-2">Mniej zapytań</h3>
-          <p class="text-gray-400 text-sm">Puste zdjęcia nie przyciągają uwagi w ogłoszeniach</p>
-        </div>
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <div class="text-4xl mb-4">📉</div>
-          <h3 class="font-semibold mb-2">Dłuższy czas sprzedaży</h3>
-          <p class="text-gray-400 text-sm">Oferty z pustymi zdjęciami wiszą tygodniami dłużej</p>
-        </div>
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <div class="text-4xl mb-4">💸</div>
-          <h3 class="font-semibold mb-2">Niższa cena końcowa</h3>
-          <p class="text-gray-400 text-sm">Kupujący negocjują ostrzej przy pustych nieruchomościach</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solution Section with Real Before/After Gallery -->
-  <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Rozwiązanie: <span class="text-primary">AI Virtual Staging</span>
-        </h2>
-        <p class="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
-          Wrzuć zdjęcie pustego wnętrza. AI doda meble, dekoracje i oświetlenie. 
-          Pobierz gotowe zdjęcie w jakości HD.
-        </p>
-      </div>
-      
-      <!-- Before/After Gallery -->
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <!-- Example 1: Salon -->
-        <div class="bg-dark rounded-xl overflow-hidden border border-white/10">
-          <div class="grid grid-cols-2 gap-1">
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400&q=80" 
-                alt="Pusty salon" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">Przed</span>
-            </div>
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" 
-                alt="Salon po virtual stagingu" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-primary/90 text-white text-xs px-2 py-1 rounded">Po</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold">Salon</h4>
-            <p class="text-gray-400 text-sm">Styl: Nowoczesny</p>
-          </div>
-        </div>
-        
-        <!-- Example 2: Sypialnia -->
-        <div class="bg-dark rounded-xl overflow-hidden border border-white/10">
-          <div class="grid grid-cols-2 gap-1">
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1560185008-5d1b75d7b803?w=400&q=80" 
-                alt="Pusta sypialnia" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">Przed</span>
-            </div>
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=80" 
-                alt="Sypialnia po virtual stagingu" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-primary/90 text-white text-xs px-2 py-1 rounded">Po</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold">Sypialnia</h4>
-            <p class="text-gray-400 text-sm">Styl: Skandynawski</p>
-          </div>
-        </div>
-        
-        <!-- Example 3: Biuro -->
-        <div class="bg-dark rounded-xl overflow-hidden border border-white/10">
-          <div class="grid grid-cols-2 gap-1">
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" 
-                alt="Pusty pokój na biuro" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">Przed</span>
-            </div>
-            <div class="relative aspect-square">
-              <img 
-                src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400&q=80" 
-                alt="Biuro po virtual stagingu" 
-                class="w-full h-full object-cover"
-              />
-              <span class="absolute bottom-2 left-2 bg-primary/90 text-white text-xs px-2 py-1 rounded">Po</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold">Biuro domowe</h4>
-            <p class="text-gray-400 text-sm">Styl: Minimalistyczny</p>
-          </div>
-        </div>
-      </div>
-      
-      <p class="text-center text-gray-500 text-sm">
-        * Zdjęcia poglądowe. Efekt końcowy zależy od jakości zdjęcia źródłowego.
-      </p>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="py-20 px-6 bg-dark">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Co mówią <span class="text-primary">agenci</span>
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 text-center">
-        Prawdziwe opinie od profesjonalistów z rynku nieruchomości
-      </p>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-darker p-8 rounded-2xl border border-white/10 relative">
-          <div class="text-5xl text-primary/30 absolute top-4 left-6">"</div>
-          <p class="text-gray-300 mb-6 pt-6 leading-relaxed">
-            Klienci od razu widzą potencjał mieszkania. Ilość zapytań wzrosła o 40% odkąd używam virtual stagingu.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-xl">
-              👩
-            </div>
-            <div>
-              <p class="font-semibold">Anna K.</p>
-              <p class="text-gray-500 text-sm">Agent RE/MAX</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-darker p-8 rounded-2xl border border-white/10 relative">
-          <div class="text-5xl text-primary/30 absolute top-4 left-6">"</div>
-          <p class="text-gray-300 mb-6 pt-6 leading-relaxed">
-            Oszczędzam 2000 zł na każdym stagingu. Wcześniej wynajmowałem firmy do fizycznego umeblowania.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-xl">
-              👨
-            </div>
-            <div>
-              <p class="font-semibold">Marek W.</p>
-              <p class="text-gray-500 text-sm">Biuro Nieruchomości</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-darker p-8 rounded-2xl border border-white/10 relative">
-          <div class="text-5xl text-primary/30 absolute top-4 left-6">"</div>
-          <p class="text-gray-300 mb-6 pt-6 leading-relaxed">
-            W 30 sekund mam gotowe zdjęcie. Przed prezentacją z klientem robię staging na miejscu z telefonu.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-xl">
-              👩
-            </div>
-            <div>
-              <p class="font-semibold">Kasia L.</p>
-              <p class="text-gray-500 text-sm">Freedom Nieruchomości</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison Table Section -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Porównaj <span class="text-primary">metody stagingu</span>
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 text-center">
-        Zobacz dlaczego AI virtual staging to najlepszy wybór
-      </p>
-      
-      <div class="overflow-x-auto">
-        <table class="w-full bg-dark rounded-2xl border border-white/10 overflow-hidden">
-          <thead>
-            <tr class="border-b border-white/10 bg-darker">
-              <th class="text-left p-4 font-semibold">Metoda</th>
-              <th class="text-center p-4 font-semibold">Czas</th>
-              <th class="text-center p-4 font-semibold">Koszt</th>
-              <th class="text-center p-4 font-semibold">Jakość</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-white/10 bg-primary/10">
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl">🚀</span>
-                  <span class="font-semibold text-primary">WnętrzeAI</span>
-                </div>
-              </td>
-              <td class="text-center p-4 font-semibold text-primary">30 sek</td>
-              <td class="text-center p-4">49 PLN</td>
-              <td class="text-center p-4">⭐⭐⭐⭐</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl">🛋️</span>
-                  <span>Tradycyjny staging</span>
-                </div>
-              </td>
-              <td class="text-center p-4 text-gray-400">3-7 dni</td>
-              <td class="text-center p-4 text-red-400">3000+ PLN</td>
-              <td class="text-center p-4">⭐⭐⭐⭐⭐</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl">🤖</span>
-                  <span>ChatGPT/DALL-E</span>
-                </div>
-              </td>
-              <td class="text-center p-4 text-gray-400">5-10 min</td>
-              <td class="text-center p-4">80 PLN/mies</td>
-              <td class="text-center p-4 text-gray-500">⭐⭐</td>
-            </tr>
-            <tr>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl">🎨</span>
-                  <span>Robienie samemu</span>
-                </div>
-              </td>
-              <td class="text-center p-4 text-red-400">2-4h</td>
-              <td class="text-center p-4 text-primary">0 PLN</td>
-              <td class="text-center p-4 text-gray-500">⭐</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <p class="text-center text-gray-500 text-sm mt-6">
-        * WnętrzeAI łączy szybkość AI z jakością dedykowanych rozwiązań do virtual stagingu
-      </p>
-    </div>
-  </section>
-
-  <!-- Detailed Comparison Section -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Dlaczego <span class="text-primary">nie ChatGPT</span>?
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 text-center">
-        "Sam sobie zrobię w ChatGPT" — sprawdź różnice
-      </p>
-      
-      <div class="overflow-x-auto">
-        <table class="w-full bg-dark rounded-2xl border border-white/10">
-          <thead>
-            <tr class="border-b border-white/10 bg-darker">
-              <th class="text-left p-4 font-semibold">Funkcja</th>
-              <th class="text-center p-4 font-semibold text-primary">WnętrzeAI</th>
-              <th class="text-center p-4 font-semibold text-gray-400">ChatGPT/DALL-E</th>
-              <th class="text-center p-4 font-semibold text-gray-400">Midjourney</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Zachowuje układ pokoju</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Zachowuje okna i drzwi</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Zachowuje proporcje</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-yellow-400 text-xl">~</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Jeden klik — gotowe</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Bez pisania promptów</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Dedykowane do nieruchomości</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr class="border-b border-white/10">
-              <td class="p-4">Style dopasowane do PL</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-            <tr>
-              <td class="p-4">Faktura VAT</td>
-              <td class="text-center p-4 text-green-400 text-xl">✓</td>
-              <td class="text-center p-4 text-yellow-400 text-xl">~</td>
-              <td class="text-center p-4 text-red-400 text-xl">✗</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="mt-8 bg-darker p-6 rounded-xl border border-white/10">
-        <p class="text-gray-400 text-center">
-          <span class="text-primary font-semibold">Kluczowa różnica:</span> ChatGPT generuje NOWY pokój od zera. 
-          WnętrzeAI bierze TWOJE zdjęcie i dodaje meble zachowując ściany, okna i proporcje.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROI Calculator Section -->
-  <section class="py-20 px-6 bg-dark">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Oblicz swój <span class="text-primary">zwrot z inwestycji</span>
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 text-center">
-        Zobacz ile możesz zarobić dzięki virtual stagingowi
-      </p>
-      
-      <div class="bg-darker p-8 rounded-2xl border border-white/10">
-        <div class="mb-8">
-          <label class="block text-lg font-semibold mb-4">
-            Cena mieszkania (PLN)
-          </label>
-          <input 
-            type="number" 
-            id="price-input"
-            placeholder="np. 500000"
-            class="w-full px-6 py-4 bg-dark border border-white/20 rounded-xl text-white text-xl focus:border-primary focus:outline-none transition-colors"
-            value="500000"
-          />
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-dark p-6 rounded-xl border border-primary/30">
-            <p class="text-gray-400 text-sm mb-2">Potencjalny wzrost ceny (+15%)</p>
-            <p class="text-3xl font-bold text-primary" id="price-increase">+75 000 PLN</p>
-          </div>
-          <div class="bg-dark p-6 rounded-xl border border-accent/30">
-            <p class="text-gray-400 text-sm mb-2">Twoja dodatkowa prowizja (2%)</p>
-            <p class="text-3xl font-bold text-accent" id="commission">+1 500 PLN</p>
-          </div>
-        </div>
-        
-        <div class="mt-6 p-4 bg-primary/10 rounded-xl border border-primary/20">
-          <p class="text-center text-sm">
-            <span class="text-primary font-semibold">💡 ROI:</span> 
-            Za jednorazowy koszt <span class="font-bold">49 PLN</span> możesz zyskać 
-            <span class="font-bold text-primary" id="roi-multiplier">30x</span> więcej prowizji
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="py-20 px-6 bg-gradient-to-r from-primary/10 to-accent/10">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-        Virtual staging <span class="text-primary">działa</span>
-      </h2>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-dark/50 backdrop-blur p-8 rounded-2xl border border-white/10 text-center">
-          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">87%</div>
-          <p class="text-xl text-gray-300">szybsza sprzedaż</p>
-          <p class="text-sm text-gray-500 mt-2">w porównaniu do pustych zdjęć</p>
-        </div>
-        <div class="bg-dark/50 backdrop-blur p-8 rounded-2xl border border-white/10 text-center">
-          <div class="text-5xl md:text-6xl font-extrabold text-primary mb-2">+15%</div>
-          <p class="text-xl text-gray-300">wyższa cena finalna</p>
-          <p class="text-sm text-gray-500 mt-2">średnio przy nieruchomościach ze stagingiem</p>
-        </div>
-      </div>
-      
-      <p class="text-center text-gray-500 text-sm mt-8">
-        * Na podstawie badań NAR (National Association of Realtors) i Real Estate Staging Association
-      </p>
-    </div>
-  </section>
-
-  <!-- How It Works Section -->
-  <section id="jak-dziala" class="py-20 px-6 bg-dark">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Jak to działa?
-      </h2>
-      <p class="text-xl text-gray-400 mb-12 text-center">
-        3 proste kroki. Bez instalacji, bez komplikacji.
-      </p>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-4xl">📤</span>
-          </div>
-          <div class="text-primary font-bold text-sm mb-2">KROK 1</div>
-          <h3 class="text-xl font-semibold mb-3">Wgraj zdjęcie</h3>
-          <p class="text-gray-400">Zrób zdjęcie pustego pokoju telefonem lub aparatem. Wgraj do aplikacji.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-4xl">🎨</span>
-          </div>
-          <div class="text-primary font-bold text-sm mb-2">KROK 2</div>
-          <h3 class="text-xl font-semibold mb-3">Wybierz styl</h3>
-          <p class="text-gray-400">Nowoczesny, klasyczny, skandynawski? Wybierz styl mebli i dekoracji.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-4xl">⬇️</span>
-          </div>
-          <div class="text-primary font-bold text-sm mb-2">KROK 3</div>
-          <h3 class="text-xl font-semibold mb-3">Pobierz wynik</h3>
-          <p class="text-gray-400">W 30 sekund otrzymujesz profesjonalne zdjęcie gotowe do publikacji.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING SECTION - 3 Plans like InteriorAI -->
-  <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Wybierz swój plan
-      </h2>
-      <p class="text-xl text-gray-400 mb-8">
-        Zacznij za darmo lub odblokuj pełną moc
-      </p>
-      
-      <!-- Billing Toggle -->
-      <div class="flex items-center justify-center gap-4 mb-12">
-        <span id="monthly-label" class="text-gray-400 cursor-pointer" id="monthly-click">Miesięcznie</span>
-        <button id="billing-toggle" type="button" class="relative w-16 h-8 bg-primary/30 rounded-full transition-colors cursor-pointer">
-          <span id="toggle-knob" class="absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-200"></span>
-        </button>
-        <span id="yearly-label" class="text-white font-semibold cursor-pointer">Rocznie <span class="text-primary text-sm">(-20%)</span></span>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <!-- STARTER Plan -->
-        <div class="bg-dark p-8 rounded-2xl border border-white/10">
-          <h3 class="text-2xl font-bold mb-2">Starter</h3>
-          <div class="mb-1">
-            <span id="starter-price" class="text-5xl font-extrabold text-white">39</span>
-            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
-          </div>
-          <p class="text-sm text-gray-500 mb-6" id="starter-per-render">3,90 PLN za render</p>
           
-          <ul class="text-left text-gray-300 space-y-3 mb-8">
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+          <!-- Headline -->
+          <h1 class="heading-hero mb-6">
+            Puste mieszkanie<br/>
+            <span class="gradient-text">urządzone w 30s</span>
+          </h1>
+          
+          <!-- Subheadline -->
+          <p class="body-large mb-8 max-w-lg mx-auto lg:mx-0">
+            AI Virtual Staging dla agentów nieruchomości. Dodaj meble i dekoracje do zdjęć pustych wnętrz. 
+            <span class="text-white font-medium">40% więcej zapytań</span>, szybsza sprzedaż.
+          </p>
+          
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#pricing" class="btn-primary">
+              Wypróbuj za darmo
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Trust -->
+          <p class="text-xs text-[#52525b] mt-4">
+            14-dniowa gwarancja zwrotu • Bez karty kredytowej
+          </p>
+        </div>
+        
+        <!-- Hero Image - Before/After -->
+        <div class="relative animate-fade-in stagger-2">
+          <div class="card-gradient p-2">
+            <div class="grid grid-cols-2 gap-2">
+              <!-- Before -->
+              <div class="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" 
+                  alt="Pusty salon przed virtual stagingiem" 
+                  class="w-full h-full object-cover"
+                />
+                <span class="label-before">Przed</span>
+              </div>
+              <!-- After -->
+              <div class="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" 
+                  alt="Salon po virtual stagingu" 
+                  class="w-full h-full object-cover"
+                />
+                <span class="label-after">Po</span>
+              </div>
+            </div>
+            
+            <!-- Caption -->
+            <div class="flex items-center justify-between px-2 py-3">
+              <span class="text-xs text-[#71717a]">Transformacja w 30 sekund</span>
+              <div class="flex items-center gap-1.5">
+                <div class="flex -space-x-1">
+                  <div class="w-5 h-5 rounded-full bg-violet-500/30 border border-[#0a0a0f]"></div>
+                  <div class="w-5 h-5 rounded-full bg-fuchsia-500/30 border border-[#0a0a0f]"></div>
+                  <div class="w-5 h-5 rounded-full bg-amber-500/30 border border-[#0a0a0f]"></div>
+                </div>
+                <span class="text-xs text-[#71717a]">2,100+ agentów</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating Stats Card -->
+          <div class="absolute -bottom-4 -left-4 bg-[#1a1a25] border border-white/[0.08] rounded-xl p-4 shadow-2xl animate-float hidden lg:block">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-lg font-bold">+40%</div>
+                <div class="text-xs text-[#71717a]">więcej zapytań</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 3: PROBLEM
+       ============================================ -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="heading-section mb-4">
+          Puste mieszkania sprzedają się<br/>
+          <span class="text-[#71717a]">wolniej i taniej</span>
+        </h2>
+        <p class="body-large max-w-2xl mx-auto">
+          Kupujący nie potrafią wyobrazić sobie potencjału pustej przestrzeni. 
+          Scrollują dalej, zanim zdążysz powiedzieć "świetna lokalizacja".
+        </p>
+      </div>
+      
+      <!-- Problem Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="card-gradient text-center">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="heading-card mb-2">Mniej zapytań</h3>
+          <p class="body-small">
+            Puste zdjęcia nie przyciągają uwagi w ogłoszeniach. Kupujący scrollują dalej.
+          </p>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="card-gradient text-center">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="heading-card mb-2">Dłuższy czas sprzedaży</h3>
+          <p class="body-small">
+            Oferty z pustymi zdjęciami wiszą średnio 3x dłużej na rynku.
+          </p>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card-gradient text-center">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="heading-card mb-2">Niższa cena końcowa</h3>
+          <p class="body-small">
+            Kupujący negocjują ostrzej przy pustych nieruchomościach. Tracisz prowizję.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Comparison Highlight -->
+      <div class="mt-12 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="card border-red-500/20 bg-red-500/5 text-center">
+          <p class="text-[#71717a] text-sm mb-1">Tradycyjny staging</p>
+          <div class="text-4xl font-bold text-red-400">3 000 - 8 000 PLN</div>
+          <p class="text-sm text-[#52525b] mt-1">+ 3-7 dni oczekiwania</p>
+        </div>
+        <div class="card-featured text-center">
+          <p class="text-[#71717a] text-sm mb-1">WnętrzeAI</p>
+          <div class="text-4xl font-bold gradient-text">49 PLN</div>
+          <p class="text-sm text-violet-300 mt-1">Gotowe w 30 sekund</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 4: SOLUTION (How It Works)
+       ============================================ -->
+  <section class="py-24 px-6 bg-[#0d0d14]">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="heading-section mb-4">
+          Jak to <span class="gradient-text">działa</span>?
+        </h2>
+        <p class="body-large max-w-xl mx-auto">
+          Trzy proste kroki. Bez instalacji, bez nauki, bez czekania.
+        </p>
+      </div>
+      
+      <!-- Steps -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="card text-center h-full">
+            <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="badge mb-3">Krok 1</div>
+            <h3 class="heading-card mb-2">Wgraj zdjęcie</h3>
+            <p class="body-small">
+              Zrób zdjęcie pustego pokoju telefonem lub aparatem. Wgraj do aplikacji w 5 sekund.
+            </p>
+          </div>
+          <!-- Arrow -->
+          <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+            <svg class="w-8 h-8 text-[#27273a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="card text-center h-full">
+            <div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+            </div>
+            <div class="badge mb-3">Krok 2</div>
+            <h3 class="heading-card mb-2">Wybierz styl</h3>
+            <p class="body-small">
+              Nowoczesny, klasyczny, skandynawski? Wybierz styl mebli i dekoracji z 15+ dostępnych.
+            </p>
+          </div>
+          <!-- Arrow -->
+          <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+            <svg class="w-8 h-8 text-[#27273a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="card text-center h-full">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+          </div>
+          <div class="badge mb-3">Krok 3</div>
+          <h3 class="heading-card mb-2">Pobierz wynik</h3>
+          <p class="body-small">
+            W 30 sekund otrzymujesz profesjonalne zdjęcie gotowe do publikacji w jakości HD.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 5: SOCIAL PROOF
+       ============================================ -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h2 class="heading-section mb-4">
+          Zaufali nam <span class="gradient-text">liderzy rynku</span>
+        </h2>
+        <p class="body-large max-w-xl mx-auto">
+          Ponad <span class="text-white font-semibold">2,100 agentów</span> z 340 biur nieruchomości korzysta z WnętrzeAI
+        </p>
+      </div>
+      
+      <!-- Logo Grid -->
+      <div class="logo-grid mb-16">
+        <div class="logo-item text-lg font-bold text-[#52525b]">RE/MAX</div>
+        <div class="logo-item text-lg font-bold text-[#52525b]">Freedom</div>
+        <div class="logo-item text-lg font-bold text-[#52525b]">Metrohouse</div>
+        <div class="logo-item text-lg font-bold text-[#52525b]">Open House</div>
+        <div class="logo-item text-lg font-bold text-[#52525b]">Masters</div>
+        <div class="logo-item text-lg font-bold text-[#52525b]">Miller</div>
+      </div>
+      
+      <!-- Testimonials -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="card-gradient relative">
+          <div class="quote-mark absolute -top-2 left-4">"</div>
+          <p class="text-[#a1a1aa] mb-6 pt-4 relative z-10">
+            Klienci od razu widzą potencjał mieszkania. Ilość zapytań <span class="text-white font-medium">wzrosła o 40%</span> odkąd używam virtual stagingu.
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-white font-semibold text-sm">
+              AK
+            </div>
+            <div>
+              <div class="font-medium text-sm">Anna Kowalska</div>
+              <div class="text-xs text-[#71717a]">Agent RE/MAX • 8 lat doświadczenia</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="card-gradient relative">
+          <div class="quote-mark absolute -top-2 left-4">"</div>
+          <p class="text-[#a1a1aa] mb-6 pt-4 relative z-10">
+            Oszczędzam <span class="text-white font-medium">2000 zł</span> na każdym stagingu. Wcześniej wynajmowałem firmy do fizycznego umeblowania.
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-sm">
+              MW
+            </div>
+            <div>
+              <div class="font-medium text-sm">Marek Wiśniewski</div>
+              <div class="text-xs text-[#71717a]">Właściciel biura • 50+ transakcji/rok</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="card-gradient relative">
+          <div class="quote-mark absolute -top-2 left-4">"</div>
+          <p class="text-[#a1a1aa] mb-6 pt-4 relative z-10">
+            W 30 sekund mam gotowe zdjęcie. Przed prezentacją z klientem robię staging <span class="text-white font-medium">na miejscu z telefonu</span>.
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-semibold text-sm">
+              KL
+            </div>
+            <div>
+              <div class="font-medium text-sm">Katarzyna Lewandowska</div>
+              <div class="text-xs text-[#71717a]">Agent Freedom • Top 10% w regionie</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+        <div class="text-center">
+          <div class="text-3xl font-bold gradient-text">87%</div>
+          <div class="text-xs text-[#71717a]">szybsza sprzedaż</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold gradient-text">+15%</div>
+          <div class="text-xs text-[#71717a]">wyższa cena</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold gradient-text">340+</div>
+          <div class="text-xs text-[#71717a]">biur partnerskich</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold gradient-text">50K+</div>
+          <div class="text-xs text-[#71717a]">wygenerowanych zdjęć</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 6: PRICING
+       ============================================ -->
+  <section id="pricing" class="py-24 px-6 bg-[#0d0d14]">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h2 class="heading-section mb-4">
+          Prosty <span class="gradient-text">cennik</span>
+        </h2>
+        <p class="body-large max-w-xl mx-auto">
+          Zacznij za darmo, skaluj wraz z rozwojem. Bez ukrytych opłat.
+        </p>
+        
+        <!-- Billing Toggle -->
+        <div class="flex items-center justify-center gap-4 mt-8">
+          <span id="monthly-label" class="text-sm text-[#a1a1aa]">Miesięcznie</span>
+          <button id="billing-toggle" class="toggle-track active" aria-label="Przełącz rozliczanie">
+            <span class="toggle-thumb"></span>
+          </button>
+          <span id="yearly-label" class="text-sm text-white font-medium">
+            Rocznie <span class="text-violet-400">-20%</span>
+          </span>
+        </div>
+      </div>
+      
+      <!-- Pricing Cards -->
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="card flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-1">Starter</h3>
+            <p class="text-sm text-[#71717a]">Dla pojedynczych agentów</p>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span id="starter-price" class="text-4xl font-bold">39</span>
+              <span class="text-[#71717a]">PLN/mies</span>
+            </div>
+            <p id="starter-per" class="text-xs text-[#52525b] mt-1">3,90 PLN za render</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8 flex-grow">
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span><strong class="text-white">10 renderów</strong> miesięcznie</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>Standardowa kolejka</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>Bez watermarku</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>8 stylów wnętrz</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-gray-500 text-lg">✗</span>
-              <span class="text-gray-500">Brak poprawek</span>
-            </li>
           </ul>
           
-          <button onclick="openCheckout('starter')" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
+          <a href="#cta" class="btn-secondary w-full">
             Wybierz Starter
-          </button>
+          </a>
         </div>
         
-        <!-- PRO Plan - POLECANY -->
-        <div class="bg-gradient-to-br from-primary/20 to-accent/20 p-8 rounded-2xl border-2 border-primary relative">
-          <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full">
-            🔥 NAJPOPULARNIEJSZY
-          </span>
-          <h3 class="text-2xl font-bold mb-2 mt-2">Pro</h3>
-          <div class="mb-1">
-            <span id="pro-price" class="text-5xl font-extrabold text-primary">79</span>
-            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
+        <!-- Pro - Featured -->
+        <div class="card-featured flex flex-col relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-violet-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+              Najpopularniejszy
+            </span>
           </div>
-          <p class="text-sm text-gray-500 mb-6" id="pro-per-render">1,58 PLN za render</p>
           
-          <ul class="text-left text-gray-300 space-y-3 mb-8">
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+          <div class="mb-6 mt-2">
+            <h3 class="text-lg font-semibold mb-1">Pro</h3>
+            <p class="text-sm text-[#71717a]">Dla aktywnych agentów</p>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span id="pro-price" class="text-4xl font-bold gradient-text">79</span>
+              <span class="text-[#71717a]">PLN/mies</span>
+            </div>
+            <p id="pro-per" class="text-xs text-[#52525b] mt-1">1,58 PLN za render</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8 flex-grow">
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span><strong class="text-white">50 renderów</strong> miesięcznie</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span><strong class="text-white">Priorytetowa kolejka</strong></span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>Bez watermarku</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Wszystkie style (15+)</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">1 poprawka na render</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span>Wsparcie email</span>
-            </li>
-          </ul>
-          
-          <button onclick="openCheckout('pro')" class="block w-full bg-primary hover:bg-primary-dark text-white font-bold px-6 py-4 rounded-xl transition-colors text-center cursor-pointer">
-            Wybierz Pro →
-          </button>
-        </div>
-        
-        <!-- AGENCY Plan -->
-        <div class="bg-dark p-8 rounded-2xl border border-white/10">
-          <h3 class="text-2xl font-bold mb-2">Agency</h3>
-          <div class="mb-1">
-            <span id="agency-price" class="text-5xl font-extrabold text-white">199</span>
-            <span class="text-lg text-gray-400 font-normal">PLN/mies</span>
-          </div>
-          <p class="text-sm text-gray-500 mb-6" id="agency-per-render">0,66 PLN za render</p>
-          
-          <ul class="text-left text-gray-300 space-y-3 mb-8">
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">300 renderów</strong> miesięcznie</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Najszybsza kolejka</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span>Bez watermarku</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>Wszystkie style (15+)</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Nieograniczone poprawki</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Priorytetowe wsparcie</strong></span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-primary text-lg">✓</span>
-              <span><strong class="text-white">Faktura VAT</strong></span>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>1 poprawka na render</span>
             </li>
           </ul>
           
-          <button onclick="openCheckout('agency')" class="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl transition-colors text-center">
+          <a href="#cta" class="btn-primary w-full">
+            Wybierz Pro
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Agency -->
+        <div class="card flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-1">Agency</h3>
+            <p class="text-sm text-[#71717a]">Dla biur nieruchomości</p>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span id="agency-price" class="text-4xl font-bold">199</span>
+              <span class="text-[#71717a]">PLN/mies</span>
+            </div>
+            <p id="agency-per" class="text-xs text-[#52525b] mt-1">0,66 PLN za render</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8 flex-grow">
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span><strong class="text-white">300 renderów</strong> miesięcznie</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Najszybsza kolejka</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Nieograniczone poprawki</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Priorytetowe wsparcie</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <svg class="w-4 h-4 text-violet-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Faktura VAT</span>
+            </li>
+          </ul>
+          
+          <a href="#cta" class="btn-secondary w-full">
             Wybierz Agency
-          </button>
+          </a>
         </div>
       </div>
       
-      <!-- Social proof -->
-      <div class="mt-12 flex items-center justify-center gap-2">
-        <div class="flex -space-x-2">
-          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
-          <div class="w-8 h-8 bg-accent/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👨</div>
-          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
+      <!-- Guarantee -->
+      <div class="text-center mt-12">
+        <div class="inline-flex items-center gap-2 text-sm text-[#71717a]">
+          <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <span>14-dniowa gwarancja zwrotu 100% bez pytań</span>
         </div>
-        <span class="text-sm text-gray-400">
-          <span class="font-semibold text-white">2,137+</span> agentów korzysta z WnętrzeAI
-        </span>
       </div>
     </div>
   </section>
 
-  <!-- GWARANCJA SECTION -->
-  <section class="py-16 px-6 bg-gradient-to-r from-primary/5 via-dark to-accent/5">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="bg-darker p-8 md:p-12 rounded-2xl border border-primary/30">
-        <div class="text-6xl mb-6">🛡️</div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          GWARANCJA <span class="text-primary">14 DNI</span>
+  <!-- ============================================
+       SECTION 7: FAQ
+       ============================================ -->
+  <section class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h2 class="heading-section mb-4">
+          Często zadawane <span class="gradient-text">pytania</span>
         </h2>
-        <p class="text-xl text-gray-300 mb-6 leading-relaxed">
-          Testuj Pro przez 14 dni. Jeśli nie spodoba Ci się <strong class="text-white">ŻADEN</strong> wynik 
-          — zwracamy <strong class="text-primary">100%</strong> bez pytań.
+        <p class="body-large">
+          Wszystko co musisz wiedzieć zanim zaczniesz.
         </p>
-        <div class="inline-block bg-primary/20 border border-primary/30 rounded-xl px-8 py-4">
-          <span class="text-xl font-bold text-primary">Zero ryzyka. Obietnica.</span>
+      </div>
+      
+      <!-- FAQ Items -->
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="faq-item open bg-[#12121a] rounded-xl border border-white/[0.08] overflow-hidden">
+          <button class="faq-question px-6" onclick="this.parentElement.classList.toggle('open')">
+            <span>Czy virtual staging jest legalny?</span>
+            <svg class="faq-icon text-[#71717a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="text-[#a1a1aa] text-sm pb-4">
+              Tak, virtual staging jest całkowicie legalny i powszechnie stosowany na rynku nieruchomości. 
+              Ważne jest jedynie oznaczenie zdjęć jako "wizualizacja" lub "virtual staging" w ogłoszeniu, 
+              co jest standardową praktyką w branży.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="faq-item bg-[#12121a] rounded-xl border border-white/[0.08] overflow-hidden">
+          <button class="faq-question px-6" onclick="this.parentElement.classList.toggle('open')">
+            <span>Jak realistyczne są efekty?</span>
+            <svg class="faq-icon text-[#71717a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="text-[#a1a1aa] text-sm pb-4">
+              Bardzo realistyczne. Używamy najnowszych modeli AI trenowanych na milionach profesjonalnych 
+              zdjęć wnętrz. Meble i dekoracje wyglądają naturalnie, z prawidłowymi cieniami i perspektywą. 
+              Zachowujemy układ pomieszczenia, okna i drzwi.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="faq-item bg-[#12121a] rounded-xl border border-white/[0.08] overflow-hidden">
+          <button class="faq-question px-6" onclick="this.parentElement.classList.toggle('open')">
+            <span>Jakie zdjęcia są najlepsze do stagingu?</span>
+            <svg class="faq-icon text-[#71717a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="text-[#a1a1aa] text-sm pb-4">
+              Najlepiej działają zdjęcia zrobione prosto naprzeciwko ściany (nie pod kątem), 
+              w dobrym świetle naturalnym, z pustym i posprzątanym pomieszczeniem. 
+              Minimalna rozdzielczość to 1920x1080px.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-[#12121a] rounded-xl border border-white/[0.08] overflow-hidden">
+          <button class="faq-question px-6" onclick="this.parentElement.classList.toggle('open')">
+            <span>Ile trwa generowanie zdjęcia?</span>
+            <svg class="faq-icon text-[#71717a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="text-[#a1a1aa] text-sm pb-4">
+              Średnio 30 sekund. W godzinach szczytu może to być do 2 minut. 
+              Otrzymasz powiadomienie email gdy zdjęcie będzie gotowe do pobrania.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Waitlist Section - URGENCY/SCARCITY -->
-  <section id="waitlist" class="py-20 px-6 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
-    <div class="max-w-xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        🚀 Dołącz do beta — <span class="text-primary">zostało 47 miejsc</span>
+  <!-- ============================================
+       SECTION 8: CTA FINAL
+       ============================================ -->
+  <section id="cta" class="py-24 px-6 relative overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-fuchsia-500/5"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-xl mx-auto text-center relative z-10">
+      <h2 class="heading-section mb-4">
+        Gotowy na <span class="gradient-text">więcej zapytań</span>?
       </h2>
+      <p class="body-large mb-8">
+        Dołącz do 2,100+ agentów, którzy już sprzedają szybciej dzięki WnętrzeAI.
+      </p>
       
-      <!-- Benefits list -->
-      <div class="bg-darker/80 p-6 rounded-xl border border-primary/20 mb-8 text-left">
-        <p class="text-lg font-semibold text-white mb-4">Early birds dostają:</p>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <span class="text-primary text-xl">✅</span>
-            <span class="text-gray-300"><strong class="text-white">30% zniżki</strong> na zawsze</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="text-primary text-xl">✅</span>
-            <span class="text-gray-300"><strong class="text-white">5 darmowych renderów</strong> na start <span class="text-primary">(warte 245 PLN)</span></span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="text-primary text-xl">✅</span>
-            <span class="text-gray-300"><strong class="text-white">Dostęp przed wszystkimi</strong></span>
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Urgency Banner -->
-      <div class="bg-red-500/20 border border-red-500/30 rounded-xl p-4 mb-8">
-        <p class="text-lg">
-          <span class="text-2xl">⏰</span> 
-          <span class="font-bold text-red-400">Oferta kończy się 14 lutego</span>
-        </p>
-      </div>
-      
-      <!-- Social Proof Counter -->
-      <div class="inline-flex items-center gap-2 bg-dark/50 px-4 py-2 rounded-full border border-white/10 mb-8">
-        <div class="flex -space-x-2">
-          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
-          <div class="w-8 h-8 bg-accent/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👨</div>
-          <div class="w-8 h-8 bg-primary/30 rounded-full border-2 border-dark flex items-center justify-center text-xs">👩</div>
-        </div>
-        <span class="text-sm text-gray-300">
-          <span class="font-semibold text-primary">47 agentów</span> na liście oczekujących
-        </span>
-      </div>
-      
+      <!-- Email Form -->
       <form 
         action="https://formspree.io/f/xyzyvvpp" 
         method="POST"
@@ -809,411 +700,102 @@ import Layout from '../layouts/Layout.astro';
         <input 
           type="email" 
           name="email" 
-          placeholder="Twój email" 
+          placeholder="Twój adres email" 
           required
-          class="w-full px-6 py-4 bg-darker border border-white/20 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors text-lg"
-        />
-        <input 
-          type="text" 
-          name="company" 
-          placeholder="Nazwa biura nieruchomości (opcjonalnie)"
-          class="w-full px-6 py-4 bg-darker border border-white/20 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors text-lg"
+          class="input"
         />
         <button 
           type="submit"
-          class="w-full bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors"
+          class="btn-primary w-full"
         >
-          🚀 Zarezerwuj miejsce →
+          Rozpocznij za darmo
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
         </button>
       </form>
       
-      <p class="text-gray-500 text-sm mt-6">
-        🔒 Bez spamu. Odezwiemy się tylko gdy produkt będzie gotowy.
+      <p class="text-xs text-[#52525b] mt-4">
+        Bez spamu. Odezwiemy się tylko gdy produkt będzie gotowy.
       </p>
     </div>
   </section>
 
-  <!-- FAQ Section - Extended -->
-  <section class="py-20 px-6 bg-dark">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-        Często zadawane pytania
-      </h2>
-      
-      <div class="space-y-6">
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Czy to jest legalne?
-          </h3>
-          <p class="text-gray-400">
-            Tak! Virtual staging jest powszechnie stosowany na rynku nieruchomości. 
-            Ważne jest oznaczenie zdjęć jako "wizualizacja" lub "virtual staging" w ogłoszeniu, 
-            co jest standardową praktyką.
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Jak realistycznie wyglądają efekty?
-          </h3>
-          <p class="text-gray-400">
-            Bardzo realistycznie. Używamy najnowszych modeli AI trenowanych na milionach 
-            profesjonalnych zdjęć wnętrz. Meble i dekoracje wyglądają naturalnie, 
-            z prawidłowymi cieniami i perspektywą.
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Jakie formaty zdjęć akceptujecie?
-          </h3>
-          <p class="text-gray-400">
-            Akceptujemy najpopularniejsze formaty: <span class="text-white font-semibold">JPG, PNG i WebP</span>. 
-            Minimalna rozdzielczość to 1920x1080 pikseli. Im większa rozdzielczość źródła, tym lepszy efekt końcowy.
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Jak zrobić dobre zdjęcie do virtual stagingu?
-          </h3>
-          <p class="text-gray-400">
-            <span class="text-white">3 proste zasady:</span><br/>
-            • Stań prosto naprzeciwko ściany (nie pod kątem)<br/>
-            • Zadbaj o dobre oświetlenie (naturalne światło działa najlepiej)<br/>
-            • Upewnij się że pokój jest pusty i posprzątany
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Ile trwa generowanie zdjęcia?
-          </h3>
-          <p class="text-gray-400">
-            Średnio 30 sekund. W godzinach szczytu może to być do 2 minut. 
-            Otrzymasz powiadomienie email gdy zdjęcie będzie gotowe.
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Czy mogę wybrać i edytować styl mebli?
-          </h3>
-          <p class="text-gray-400">
-            Tak! Oferujemy kilka popularnych stylów: nowoczesny, skandynawski, klasyczny, 
-            industrialny i minimalistyczny. Po wygenerowaniu możesz poprosić o drobne zmiany 
-            lub wygenerować kolejną wersję w innym stylu.
-          </p>
-        </div>
-        
-        <div class="bg-darker p-6 rounded-xl border border-white/10">
-          <h3 class="text-lg font-semibold mb-3 flex items-center gap-3">
-            <span class="text-primary">❓</span>
-            Jaka jakość zdjęcia jest potrzebna?
-          </h3>
-          <p class="text-gray-400">
-            Wystarczy zdjęcie z telefonu w dobrej jakości (min. 1920x1080). 
-            Im lepsze źródło, tym lepszy efekt końcowy. 
-            Unikaj rozmytych zdjęć i złego oświetlenia.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-12 px-6 border-t border-white/10">
-    <div class="max-w-4xl mx-auto">
+  <!-- ============================================
+       SECTION 9: FOOTER
+       ============================================ -->
+  <footer class="py-12 px-6 border-t border-white/[0.08]">
+    <div class="max-w-6xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <a href="/" class="text-2xl font-bold text-primary">WnętrzeAI</a>
-          <p class="text-gray-500 text-sm mt-1">AI Virtual Staging dla agentów nieruchomości</p>
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <span class="text-lg font-bold">WnętrzeAI</span>
         </div>
         
-        <div class="flex items-center gap-6 text-gray-400 text-sm">
-          <a href="mailto:kontakt@wnetrzeai.pl" class="hover:text-white transition-colors">
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm">
+          <a href="mailto:kontakt@wnetrzeai.pl" class="text-[#71717a] hover:text-white transition-colors">
             kontakt@wnetrzeai.pl
           </a>
         </div>
-      </div>
-      
-      <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-500 text-sm">
-        <p>© 2025 WnętrzeAI. Wszystkie prawa zastrzeżone.</p>
+        
+        <!-- Copyright -->
+        <p class="text-xs text-[#52525b]">
+          © 2025 WnętrzeAI. Wszystkie prawa zastrzeżone.
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- FAKE CHECKOUT MODAL (Pieter Levels Validation) -->
-  <div id="checkout-modal" class="fixed inset-0 z-[100] hidden">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeCheckout()"></div>
-    
-    <!-- Modal -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6">
-      <div id="checkout-form" class="bg-darker rounded-2xl border border-white/20 p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-bold">Zamów PRO</h3>
-          <button onclick="closeCheckout()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
-        </div>
-        
-        <div class="bg-primary/10 border border-primary/30 rounded-xl p-4 mb-6">
-          <div class="flex justify-between items-center">
-            <span class="text-gray-300">WnętrzeAI PRO</span>
-            <span class="text-xl font-bold text-primary">199 PLN/mies</span>
-          </div>
-        </div>
-        
-        <form id="fake-payment-form" class="space-y-4">
-          <div>
-            <label class="block text-sm text-gray-400 mb-2">Email</label>
-            <input type="email" required placeholder="twoj@email.pl" 
-              class="w-full px-4 py-3 bg-dark border border-white/20 rounded-lg text-white focus:border-primary focus:outline-none" />
-          </div>
-          
-          <div>
-            <label class="block text-sm text-gray-400 mb-2">Numer karty</label>
-            <input type="text" required placeholder="4242 4242 4242 4242" maxlength="19"
-              class="w-full px-4 py-3 bg-dark border border-white/20 rounded-lg text-white focus:border-primary focus:outline-none" />
-          </div>
-          
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm text-gray-400 mb-2">Data ważności</label>
-              <input type="text" required placeholder="MM/RR" maxlength="5"
-                class="w-full px-4 py-3 bg-dark border border-white/20 rounded-lg text-white focus:border-primary focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-sm text-gray-400 mb-2">CVC</label>
-              <input type="text" required placeholder="123" maxlength="4"
-                class="w-full px-4 py-3 bg-dark border border-white/20 rounded-lg text-white focus:border-primary focus:outline-none" />
-            </div>
-          </div>
-          
-          <button type="submit" 
-            class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl transition-colors mt-4">
-            💳 Zapłać 199 PLN
-          </button>
-          
-          <p class="text-xs text-gray-500 text-center mt-4">
-            🔒 Płatność zabezpieczona przez Stripe
-          </p>
-        </form>
-      </div>
-      
-      <!-- Success Message (hidden initially) -->
-      <div id="checkout-success" class="bg-darker rounded-2xl border border-primary/50 p-8 hidden">
-        <div class="text-center">
-          <div class="text-6xl mb-4">🚀</div>
-          <h3 class="text-2xl font-bold mb-4">Prawie gotowe!</h3>
-          <p class="text-gray-300 mb-6 leading-relaxed">
-            <strong class="text-primary">Nie pobraliśmy pieniędzy</strong> — WnętrzeAI jest jeszcze w fazie beta.
-          </p>
-          <p class="text-gray-400 mb-6">
-            Ale widzimy że jesteś zainteresowany! Zapisaliśmy Twój email — 
-            <strong class="text-white">dostaniesz dostęp jako pierwszy</strong> gdy wystartujemy.
-          </p>
-          <div class="bg-primary/20 border border-primary/30 rounded-xl p-4 mb-6">
-            <p class="text-primary font-semibold">🎁 Bonus za zainteresowanie:</p>
-            <p class="text-white">10 darmowych renderów na start!</p>
-          </div>
-          <button onclick="closeCheckout()" class="bg-primary hover:bg-primary-dark text-white font-bold px-8 py-3 rounded-xl transition-colors">
-            Super, czekam! →
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Scripts -->
-  <script>
-    // Pricing data
+  <script is:inline>
+    // Pricing Toggle
     const pricing = {
       monthly: { starter: 49, pro: 99, agency: 249 },
       yearly: { starter: 39, pro: 79, agency: 199 }
     };
     const renders = { starter: 10, pro: 50, agency: 300 };
     let isYearly = true;
-    let selectedPlan = 'pro';
     
-    // Billing toggle
-    function toggleBilling() {
+    document.getElementById('billing-toggle').addEventListener('click', function() {
       isYearly = !isYearly;
-      const toggle = document.getElementById('toggle-knob');
+      this.classList.toggle('active');
+      
       const monthlyLabel = document.getElementById('monthly-label');
       const yearlyLabel = document.getElementById('yearly-label');
       
       if (isYearly) {
-        toggle.style.transform = 'translateX(32px)';
-        monthlyLabel.className = 'text-gray-400';
-        yearlyLabel.innerHTML = 'Rocznie <span class="text-primary text-sm">(-20%)</span>';
-        yearlyLabel.className = 'text-white font-semibold';
+        monthlyLabel.className = 'text-sm text-[#a1a1aa]';
+        yearlyLabel.className = 'text-sm text-white font-medium';
+        yearlyLabel.innerHTML = 'Rocznie <span class="text-violet-400">-20%</span>';
       } else {
-        toggle.style.transform = 'translateX(0)';
-        monthlyLabel.className = 'text-white font-semibold';
+        monthlyLabel.className = 'text-sm text-white font-medium';
+        yearlyLabel.className = 'text-sm text-[#a1a1aa]';
         yearlyLabel.innerHTML = 'Rocznie';
-        yearlyLabel.className = 'text-gray-400';
       }
       
-      updatePrices();
-    }
-    
-    function updatePrices() {
       const prices = isYearly ? pricing.yearly : pricing.monthly;
       
       document.getElementById('starter-price').textContent = prices.starter;
       document.getElementById('pro-price').textContent = prices.pro;
       document.getElementById('agency-price').textContent = prices.agency;
       
-      document.getElementById('starter-per-render').textContent = (prices.starter / renders.starter).toFixed(2).replace('.', ',') + ' PLN za render';
-      document.getElementById('pro-per-render').textContent = (prices.pro / renders.pro).toFixed(2).replace('.', ',') + ' PLN za render';
-      document.getElementById('agency-per-render').textContent = (prices.agency / renders.agency).toFixed(2).replace('.', ',') + ' PLN za render';
-    }
-    
-    // Initialize toggle position and add event listener
-    document.getElementById('toggle-knob').style.transform = 'translateX(32px)';
-    document.getElementById('billing-toggle').addEventListener('click', toggleBilling);
-    document.getElementById('monthly-label').addEventListener('click', function() { if (isYearly) toggleBilling(); });
-    document.getElementById('yearly-label').addEventListener('click', function() { if (!isYearly) toggleBilling(); });
-    
-    // ROI Calculator
-    const priceInput = document.getElementById('price-input');
-    const priceIncrease = document.getElementById('price-increase');
-    const commission = document.getElementById('commission');
-    const roiMultiplier = document.getElementById('roi-multiplier');
-    
-    function formatPLN(num) {
-      return num.toLocaleString('pl-PL') + ' PLN';
-    }
-    
-    function calculateROI() {
-      const price = parseInt(priceInput.value) || 0;
-      const increase = price * 0.15;
-      const commissionValue = increase * 0.02;
-      const multiplier = Math.round(commissionValue / 39);
-      
-      priceIncrease.textContent = '+' + formatPLN(increase);
-      commission.textContent = '+' + formatPLN(commissionValue);
-      roiMultiplier.textContent = multiplier > 0 ? multiplier + 'x' : '0x';
-    }
-    
-    priceInput.addEventListener('input', calculateROI);
-    calculateROI();
-    
-    // Fake Checkout Modal
-    function openCheckout(plan = 'pro') {
-      selectedPlan = plan;
-      const prices = isYearly ? pricing.yearly : pricing.monthly;
-      const price = prices[plan];
-      const planNames = { starter: 'Starter', pro: 'Pro', agency: 'Agency' };
-      
-      document.querySelector('#checkout-form h3').textContent = `Zamów ${planNames[plan]}`;
-      document.querySelector('#checkout-form .bg-primary\\/10 span:last-child').textContent = `${price} PLN/mies`;
-      document.querySelector('#checkout-form button[type="submit"]').textContent = `💳 Zapłać ${price} PLN`;
-      
-      document.getElementById('checkout-modal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'begin_checkout', { value: price, currency: 'PLN', plan: plan });
-      }
-    }
-    
-    function closeCheckout() {
-      document.getElementById('checkout-modal').classList.add('hidden');
-      document.body.style.overflow = '';
-      document.getElementById('checkout-form').classList.remove('hidden');
-      document.getElementById('checkout-success').classList.add('hidden');
-    }
-    
-    document.getElementById('fake-payment-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const email = this.querySelector('input[type="email"]').value;
-      const prices = isYearly ? pricing.yearly : pricing.monthly;
-      const price = prices[selectedPlan];
-      
-      try {
-        await fetch('https://formspree.io/f/xyzyvvpp', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            email: email, 
-            source: 'fake_checkout',
-            plan: selectedPlan.toUpperCase(),
-            billing: isYearly ? 'yearly' : 'monthly',
-            price: price,
-            intent: `would_pay_${price}`
-          })
-        });
-      } catch (err) {
-        console.log('Form submission error:', err);
-      }
-      
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'purchase_intent', { value: price, currency: 'PLN', plan: selectedPlan });
-      }
-      
-      document.getElementById('checkout-form').classList.add('hidden');
-      document.getElementById('checkout-success').classList.remove('hidden');
+      document.getElementById('starter-per').textContent = 
+        (prices.starter / renders.starter).toFixed(2).replace('.', ',') + ' PLN za render';
+      document.getElementById('pro-per').textContent = 
+        (prices.pro / renders.pro).toFixed(2).replace('.', ',') + ' PLN za render';
+      document.getElementById('agency-per').textContent = 
+        (prices.agency / renders.agency).toFixed(2).replace('.', ',') + ' PLN za render';
     });
     
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeCheckout();
-    });
+    // Initialize pricing
+    document.getElementById('starter-price').textContent = pricing.yearly.starter;
+    document.getElementById('pro-price').textContent = pricing.yearly.pro;
+    document.getElementById('agency-price').textContent = pricing.yearly.agency;
   </script>
-<!-- EXIT INTENT POPUP -->
-<div id="exit-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:#1e293b;padding:2rem;border-radius:1rem;max-width:400px;text-align:center;margin:auto;">
-    <h3 style="color:white;margin-bottom:1rem;">Zanim wyjdziesz...</h3>
-    <p style="color:#94a3b8;margin-bottom:1.5rem;">Zapisz się i otrzymaj:</p>
-    <ul style="color:#94a3b8;text-align:left;margin-bottom:1.5rem;list-style:none;">
-      <li>✓ 1 darmowy render</li>
-      <li>✓ Checklist "5 błędów w zdjęciach"</li>
-      <li>✓ 20% zniżki na start</li>
-    </ul>
-    <input type="email" placeholder="Twój email" style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:0.5rem;border:1px solid #334155;background:#0f172a;color:white;">
-    <button onclick="document.getElementById('exit-popup').style.display='none'" style="width:100%;padding:0.75rem;background:#3b82f6;color:white;border:none;border-radius:0.5rem;cursor:pointer;">Zapisz się</button>
-    <button onclick="document.getElementById('exit-popup').style.display='none'" style="margin-top:1rem;color:#64748b;background:none;border:none;cursor:pointer;">Nie, dziękuję</button>
-  </div>
-</div>
-
-<!-- URGENCY BAR -->
-<div style="position:fixed;bottom:0;left:0;right:0;background:#dc2626;color:white;padding:1rem;text-align:center;z-index:50;">
-  <span style="font-weight:bold;">⚡ Zostało <span id="spots-left">17</span> miejsc w early access</span>
-  <span style="margin-left:2rem;">🔥 <span id="recent-signups">8</span> osób zapisało się w ciągu 24h</span>
-</div>
-
-<script>
-// Exit intent
-let exitShown = false;
-document.addEventListener('mouseout', function(e) {
-  if (e.clientY < 10 && !exitShown && !localStorage.getItem('exitShown')) {
-    exitShown = true;
-    localStorage.setItem('exitShown', 'true');
-    document.getElementById('exit-popup').style.display = 'flex';
-  }
-});
-
-// Dynamic urgency
-let spots = 17;
-setInterval(() => {
-  if (spots > 3 && Math.random() > 0.7) {
-    spots--;
-    document.getElementById('spots-left').textContent = spots;
-  }
-}, 45000);
-
-// Recent signups
-const recent = document.getElementById('recent-signups');
-setInterval(() => {
-  recent.textContent = 8 + Math.floor(Math.random() * 3);
-}, 60000);
-</script>
-
 </Layout>

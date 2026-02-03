@@ -2,25 +2,46 @@
 import '../styles/global.css'
 
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title = "WnętrzeAI — AI Virtual Staging dla Agentów Nieruchomości",
+  description = "Puste mieszkanie urządzone w 30 sekund. AI dodaje meble i dekoracje do zdjęć nieruchomości. 40% więcej zapytań, szybsza sprzedaż."
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WnętrzeAI - AI Virtual Staging dla agentów nieruchomości. Puste mieszkanie urządzone w 30 sekund." />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0f" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <title>{title}</title>
   </head>
-  <body class="bg-darker text-white antialiased">
+  <body class="bg-[#0a0a0f] text-[#fafafa] antialiased font-['Plus_Jakarta_Sans',system-ui,sans-serif]">
     <slot />
   </body>
 </html>
