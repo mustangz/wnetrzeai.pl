@@ -879,6 +879,14 @@ import Layout from '../layouts/Layout.astro';
 
     // Get or assign variant
     function getVariant() {
+      // Allow override via URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlVariant = urlParams.get('v')?.toUpperCase();
+      if (urlVariant && ['A', 'B', 'C'].includes(urlVariant)) {
+        localStorage.setItem('wnetrzeai_variant', urlVariant);
+        return urlVariant;
+      }
+      
       let variant = localStorage.getItem('wnetrzeai_variant');
       if (!variant) {
         const variants = ['A', 'B', 'C'];
