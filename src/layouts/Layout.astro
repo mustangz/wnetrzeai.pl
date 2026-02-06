@@ -43,5 +43,9 @@ const {
   </head>
   <body class="bg-[#0a0a0f] text-[#fafafa] antialiased font-['Plus_Jakarta_Sans',system-ui,sans-serif]">
     <slot />
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </body>
 </html>
