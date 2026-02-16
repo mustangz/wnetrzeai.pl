@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import BeforeAfter from "@/components/BeforeAfter";
 
 // A/B/C pricing variants
 const pricingVariants = {
@@ -270,6 +271,47 @@ export default function Home() {
                     </svg>
                   </div>
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER EXAMPLES */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="heading-section mb-4">Zobacz <span className="gradient-text">efekty</span></h2>
+            <p className="body-large max-w-xl mx-auto">
+              Przesuń suwak aby zobaczyć transformację. Prawdziwe zdjęcia, prawdziwe wyniki.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                before: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+                after: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+                label: "Salon — styl nowoczesny",
+              },
+              {
+                before: "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&q=80",
+                after: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+                label: "Sypialnia — styl skandynawski",
+              },
+              {
+                before: "https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80",
+                after: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+                label: "Kuchnia — styl klasyczny",
+              },
+              {
+                before: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80",
+                after: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80",
+                label: "Biuro — styl minimalistyczny",
+              },
+            ].map((example) => (
+              <div key={example.label}>
+                <BeforeAfter beforeUrl={example.before} afterUrl={example.after} />
+                <p className="text-sm text-[#71717a] text-center mt-3">{example.label}</p>
               </div>
             ))}
           </div>
