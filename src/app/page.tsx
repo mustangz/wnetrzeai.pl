@@ -94,6 +94,18 @@ export default function Home() {
       q: "Ile trwa generowanie zdjęcia?",
       a: "Średnio 30 sekund. W godzinach szczytu może to być do 2 minut. Otrzymasz powiadomienie email gdy zdjęcie będzie gotowe do pobrania.",
     },
+    {
+      q: "Czy mogę przetestować za darmo?",
+      a: "Tak! Pierwszy render jest całkowicie darmowy, bez podawania karty kredytowej. Wgraj zdjęcie, wybierz styl i zobacz efekt w 30 sekund.",
+    },
+    {
+      q: "Jakie style wnętrz są dostępne?",
+      a: "Oferujemy 15+ stylów: nowoczesny, skandynawski, klasyczny, industrialny, minimalistyczny, boho, glamour, japoński i wiele innych. Lista stale się powiększa.",
+    },
+    {
+      q: "Czy AI zmieni układ mojego mieszkania?",
+      a: "Nie. Nasza technologia zachowuje dokładny układ pomieszczenia — ściany, okna, drzwi i kolumny pozostają nietknięte. AI dodaje jedynie meble i dekoracje.",
+    },
   ];
 
   return (
@@ -144,9 +156,24 @@ export default function Home() {
                   </svg>
                 </Link>
               </div>
-              <p className="text-xs text-[#52525b] mt-4">
-                14-dniowa gwarancja zwrotu &bull; Bez karty kredytowej
-              </p>
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-4">
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#a1a1aa]">
+                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  1 darmowy render
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#a1a1aa]">
+                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  Bez karty kredytowej
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#a1a1aa]">
+                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  Gotowe w 30 sekund
+                </span>
+              </div>
+              <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-xs text-amber-300">Model AI w trakcie treningu — jakość stale rośnie</span>
+              </div>
             </div>
             <div className="relative animate-fade-in stagger-2">
               <div className="card-gradient p-2">
@@ -277,6 +304,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHY WNETRZEAI */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="heading-section mb-4">Dlaczego <span className="gradient-text">WnetrzeAI</span>?</h2>
+            <p className="body-large max-w-xl mx-auto">Jedyne narzędzie do virtual stagingu stworzone dla polskiego rynku nieruchomości.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: "flag", color: "violet", title: "Polski produkt", desc: "Interfejs, wsparcie i dokumentacja w 100% po polsku. Faktura VAT." },
+              { icon: "shield", color: "green", title: "Zachowuje układ", desc: "AI nie zmienia ścian, okien ani drzwi. Meble pasują do realnego pokoju." },
+              { icon: "hd", color: "fuchsia", title: "Jakość HD", desc: "Zdjęcia w pełnej rozdzielczości, bez watermarku, gotowe na OLX i Otodom." },
+              { icon: "zap", color: "amber", title: "30 sekund", desc: "Wynik w pół minuty. Tradycyjny staging to 3-7 dni czekania." },
+            ].map((f) => (
+              <div key={f.title} className="card text-center">
+                <div className={`w-12 h-12 rounded-xl bg-${f.color}-500/10 flex items-center justify-center mx-auto mb-4`}>
+                  <svg className={`w-6 h-6 text-${f.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    {f.icon === "flag" && <path strokeLinecap="round" strokeLinejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />}
+                    {f.icon === "shield" && <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />}
+                    {f.icon === "hd" && <><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></>}
+                    {f.icon === "zap" && <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />}
+                  </svg>
+                </div>
+                <h3 className="heading-card mb-2">{f.title}</h3>
+                <p className="body-small">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BEFORE / AFTER EXAMPLES */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
@@ -312,6 +370,58 @@ export default function Home() {
               <div key={example.label}>
                 <BeforeAfter beforeUrl={example.before} afterUrl={example.after} />
                 <p className="text-sm text-[#71717a] text-center mt-3">{example.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 px-6 bg-[#0d0d14]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="heading-section mb-4">Co mówią <span className="gradient-text">agenci</span></h2>
+            <p className="body-large max-w-xl mx-auto">Opinie beta testerów, którzy już korzystają z WnetrzeAI.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Marta K.",
+                role: "Agent nieruchomości, Warszawa",
+                text: "Moje ogłoszenia z virtual stagingiem dostają 2x więcej zapytań. Klienci od razu widzą potencjał mieszkania.",
+                stars: 5,
+              },
+              {
+                name: "Tomasz R.",
+                role: "Biuro nieruchomości, Kraków",
+                text: "Oszczędzamy tysiące złotych na tradycyjnym stagingu. Efekty są realistyczne i gotowe w kilka minut.",
+                stars: 5,
+              },
+              {
+                name: "Anna W.",
+                role: "Agent nieruchomości, Wrocław",
+                text: "Prostota obsługi mnie zaskoczyła — wgrywam zdjęcie, wybieram styl i mam gotową wizualizację. Polecam!",
+                stars: 5,
+              },
+            ].map((t) => (
+              <div key={t.name} className="card-gradient">
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: t.stars }).map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm text-[#a1a1aa] mb-4 leading-relaxed">&ldquo;{t.text}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center text-sm font-semibold text-violet-300">
+                    {t.name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium">{t.name}</div>
+                    <div className="text-xs text-[#71717a]">{t.role}</div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -523,7 +633,7 @@ export default function Home() {
               <span className="text-lg font-bold">Wnętrze<span className="gradient-ai">AI</span></span>
             </div>
             <a href="mailto:kontakt@wnetrzeai.pl" className="text-sm text-[#71717a] hover:text-white transition-colors">kontakt@wnetrzeai.pl</a>
-            <p className="text-xs text-[#52525b]">&copy; 2025 Wnętrze<span className="gradient-ai">AI</span>. Wszystkie prawa zastrzeżone.</p>
+            <p className="text-xs text-[#52525b]">&copy; 2026 Wnętrze<span className="gradient-ai">AI</span>. Wszystkie prawa zastrzeżone.</p>
           </div>
         </div>
       </footer>
