@@ -43,8 +43,6 @@ export async function POST(request: NextRequest) {
       imageUrl: dataUri,
       style: style.prompt,
       roomType: roomType.promptHint,
-      stagingStyle: style.stagingStyle,
-      stagingRoom: roomType.stagingRoom,
       customPrompt,
     });
 
@@ -61,9 +59,12 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ resultUrl: resizedDataUri });
   } catch (error) {
-    console.error("Generation error:", error);
+    const errMsg = error instanceof Error ? error.message : String(error);
+    const errStack = error instanceof Error ? error.stack : "";
+    console.error("Generation error:", errMsg);
+    console.error("Stack:", errStack);
     return NextResponse.json(
-      { error: "Failed to generate image. Please try again." },
+      { error: `Failed to generate image: ${errMsg}` },
       { status: 500 }
     );
   }

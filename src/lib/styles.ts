@@ -3,7 +3,7 @@ export interface InteriorStyle {
   name: string;
   icon: string;
   prompt: string;
-  stagingStyle: string; // Maps to proplabs/virtual-staging furniture_style enum
+  stagingStyle: string;
 }
 
 export const INTERIOR_STYLES: InteriorStyle[] = [
@@ -56,7 +56,7 @@ export type RoomType = {
   name: string;
   icon: string;
   promptHint: string;
-  stagingRoom: string; // Maps to proplabs/virtual-staging room enum
+  stagingRoom: string;
 };
 
 export const ROOM_TYPES: RoomType[] = [
@@ -64,49 +64,56 @@ export const ROOM_TYPES: RoomType[] = [
     id: "living-room",
     name: "Salon",
     icon: "🛋️",
-    promptHint: "living room with sofa, coffee table, TV stand, rug, curtains",
+    promptHint: "living room furnished with: one large sofa, one coffee table, one TV stand with TV, one area rug, curtains on windows",
     stagingRoom: "Living Room",
   },
   {
     id: "living-kitchen",
     name: "Salon z aneksem",
     icon: "🛋️🍳",
-    promptHint: "open-plan living room with kitchenette, sofa, coffee table, kitchen island or counter with stools, dining area",
+    promptHint: "open-plan living room with kitchen area furnished with: one sofa, one coffee table, one kitchen island with two bar stools, one small dining table with chairs",
     stagingRoom: "Living Room",
   },
   {
     id: "bedroom",
     name: "Sypialnia",
     icon: "🛏️",
-    promptHint: "bedroom with bed, nightstands, wardrobe, soft lighting, bedding",
+    promptHint: "bedroom furnished with: one double bed with headboard and bedding, two nightstands with lamps, one wardrobe or dresser",
     stagingRoom: "Bedroom",
   },
   {
     id: "kitchen",
     name: "Kuchnia",
     icon: "🍳",
-    promptHint: "kitchen with dining table, chairs, modern appliances, organized countertops",
+    promptHint: "kitchen furnished with: one dining table, four chairs, organized countertops with small appliances",
     stagingRoom: "Kitchen",
   },
   {
     id: "bathroom",
     name: "Łazienka",
     icon: "🚿",
-    promptHint: "bathroom with towels, bath mat, accessories, plants, organized vanity",
+    promptHint: "bathroom with: towels on rack, bath mat on floor, soap dispenser, one small plant, organized vanity with mirror",
     stagingRoom: "Bathroom",
   },
   {
     id: "office",
     name: "Biuro",
     icon: "💼",
-    promptHint: "home office with desk, ergonomic chair, bookshelf, desk lamp, organized workspace",
+    promptHint: "home office furnished with: one large desk, one ergonomic office chair, one bookshelf with books, one desk lamp, monitor on desk",
     stagingRoom: "Office",
   },
   {
     id: "dining",
     name: "Jadalnia",
     icon: "🍽️",
-    promptHint: "dining room with dining table, chairs, centerpiece, pendant lighting, sideboard",
+    promptHint: "dining room furnished with: one large dining table, six dining chairs, one pendant light above table, one sideboard cabinet",
     stagingRoom: "Dining Room",
+  },
+  {
+    id: "hallway",
+    name: "Korytarz",
+    icon: "🚪",
+    promptHint: "hallway furnished with: one narrow console table, one wall mirror, coat hooks on wall, one shoe cabinet, one pendant light",
+    stagingRoom: "Hallway",
   },
 ];

@@ -1,4 +1,5 @@
 import Replicate from "replicate";
+import sharp from "sharp";
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
@@ -15,14 +16,13 @@ const DEMO_IMAGES: Record<string, string> = {
   "bathroom": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1024&q=90",
   "office": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1024&q=90",
   "dining": "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1024&q=90",
+  "hallway": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1024&q=90",
 };
 
 export interface GenerateInput {
   imageUrl: string;
   style: string;
   roomType: string;
-  stagingStyle: string;
-  stagingRoom: string;
   customPrompt?: string;
 }
 
@@ -113,23 +113,63 @@ Result: a clean, freshly finished empty ${roomType} with the EXACT same room sha
 }
 
 /**
- * Step 2: Use proplabs/virtual-staging — dedicated virtual staging model.
+ * Generate an inpainting mask: black on top (preserve ceiling/walls), white on bottom (fill with furniture).
+ * Soft gradient transition to avoid hard edges.
+ */
+async function generateMask(width: number, height: number): Promise<string> {
+  const gradientStart = Math.round(height * 0.25);
+  const gradientEnd = Math.round(height * 0.40);
+
+  const raw = Buffer.alloc(width * height);
+  for (let y = 0; y < height; y++) {
+    let value: number;
+    if (y < gradientStart) {
+      value = 0; // black — preserve
+    } else if (y < gradientEnd) {
+      value = Math.round(255 * ((y - gradientStart) / (gradientEnd - gradientStart)));
+    } else {
+      value = 255; // white — inpaint
+    }
+    raw.fill(value, y * width, (y + 1) * width);
+  }
+
+  const maskBuffer = await sharp(raw, { raw: { width, height, channels: 1 } })
+    .png()
+    .toBuffer();
+
+  return `data:image/png;base64,${maskBuffer.toString("base64")}`;
+}
+
+/** Fetch image from URL and get its dimensions via sharp. */
+async function getImageDimensions(imageUrl: string): Promise<{ width: number; height: number }> {
+  const res = await fetch(imageUrl);
+  const buffer = Buffer.from(await res.arrayBuffer());
+  const meta = await sharp(buffer).metadata();
+  return { width: meta.width || 1024, height: meta.height || 768 };
+}
+
+/**
+ * Step 2: Use FLUX Fill Pro for inpainting furniture into the cleaned room.
  */
 async function stageRoom(
   cleanImageUrl: string,
-  stagingStyle: string,
-  stagingRoom: string
+  stylePrompt: string,
+  roomPromptHint: string
 ): Promise<string> {
-  return replicateRunWithRetry(
-    "proplabs/virtual-staging:635d607efc6e3a6016ef6d655327cd35f3d792e84b8f110688b04498c6e94cfb",
-    {
-      image: cleanImageUrl,
-      room: stagingRoom,
-      furniture_style: stagingStyle,
-      furniture_items: "Default (AI decides)",
-      replicate_api_key: process.env.REPLICATE_API_TOKEN,
-    }
-  );
+  // Get actual dimensions of the cleaned image (Flux Kontext may resize)
+  const { width, height } = await getImageDimensions(cleanImageUrl);
+  const mask = await generateMask(width, height);
+
+  const prompt = `A ${roomPromptHint}. ${stylePrompt}. The room contains ONLY the furniture listed above — nothing else. Each piece of furniture is placed with correct perspective, realistic shadows, and natural lighting matching the room. The walls, windows, doors, floor, and ceiling are unchanged. Professional real estate photography, 4K, photorealistic.`;
+
+  return replicateRunWithRetry("black-forest-labs/flux-fill-pro", {
+    image: cleanImageUrl,
+    mask,
+    prompt,
+    guidance: 30,
+    steps: 50,
+    output_format: "jpg",
+  });
 }
 
 /**
@@ -151,7 +191,7 @@ That is all. Do NOT move furniture, do NOT modify walls, do NOT add or remove do
 /**
  * Three-step virtual staging pipeline:
  * 1. Flux Kontext Pro cleans the room + finishes surfaces
- * 2. proplabs/virtual-staging adds furniture
+ * 2. FLUX Fill Pro inpaints furniture
  * 3. Flux Kontext Pro polishes staging (fixes paintings, lights, doors)
  * Set DEMO_MODE=true in .env.local to skip API calls.
  */
@@ -171,9 +211,8 @@ Keep everything else exactly as it is. Only apply the specific change requested 
 
 export async function generateStagedImage({
   imageUrl,
+  style,
   roomType,
-  stagingStyle,
-  stagingRoom,
   customPrompt,
 }: GenerateInput): Promise<string> {
   if (DEMO_MODE) {
@@ -186,8 +225,8 @@ export async function generateStagedImage({
 
   await wait(3000);
 
-  // Step 2: Stage the finished room with furniture
-  const stagedImageUrl = await stageRoom(finishedImageUrl, stagingStyle, stagingRoom);
+  // Step 2: Stage the finished room with FLUX Fill Pro inpainting
+  const stagedImageUrl = await stageRoom(finishedImageUrl, style, roomType);
 
   await wait(3000);
 
