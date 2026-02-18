@@ -23,6 +23,8 @@ export interface GenerateInput {
   imageUrl: string;
   style: string;
   roomType: string;
+  origWidth: number;
+  origHeight: number;
   customPrompt?: string;
 }
 
@@ -89,15 +91,17 @@ async function fluxEdit(imageUrl: string, prompt: string): Promise<string> {
  * Step 1: Clean room AND finish raw surfaces in a single Flux call.
  */
 async function cleanAndFinishRoom(imageUrl: string, roomType: string, customPrompt?: string): Promise<string> {
-  const userInstructions = customPrompt ? `\n\nADDITIONAL USER INSTRUCTIONS (follow these too): ${customPrompt}` : "";
+  const userInstructions = customPrompt ? `\n\nUSER INSTRUCTIONS (these are the PRIMARY guidelines — follow them as the leading directive): ${customPrompt}` : "";
   return fluxEdit(imageUrl,
     `ABSOLUTE RULES — NEVER BREAK THESE:
 - NEVER remove, move, or modify ANY wall, partition, or column. Every wall must stay exactly where it is.
 - NEVER remove or modify stairs, staircases, or steps. They are permanent structure.
 - NEVER remove or block any entrance, passage, archway, or opening between rooms.
 - NEVER convert a window into a door. Windows are windows — they have glass and are set higher in the wall.
+- NEVER modify, replace, or remove window frames, window joinery, or any window hardware. Window frames, sills, handles, and glazing bars must remain EXACTLY as they are in the original photo.
 - NEVER add doors to solid walls. Only add doors where there is ALREADY a clear passage/opening you can walk through.
 - NEVER change the room layout or geometry in any way.
+- NEVER generate, render, or insert any text, letters, words, numbers, labels, signs, or written content anywhere in the image. No text of any kind is allowed in the output.
 
 NOW, only do these surface-level cosmetic changes to this ${roomType}:
 
@@ -108,7 +112,7 @@ NOW, only do these surface-level cosmetic changes to this ${roomType}:
 5. LIGHTING: Add one simple modern ceiling light fixture in the center of the ceiling.
 6. ELECTRICAL: Cover exposed junction boxes with white plates.
 
-Result: a clean, freshly finished empty ${roomType} with the EXACT same room shape, walls, stairs, windows, and openings as the original photo.${userInstructions}`
+Result: a clean, freshly finished empty ${roomType} with the EXACT same room shape, walls, stairs, windows (including all window frames and joinery), and openings as the original photo.${userInstructions}`
   );
 }
 
@@ -160,7 +164,7 @@ async function stageRoom(
   const { width, height } = await getImageDimensions(cleanImageUrl);
   const mask = await generateMask(width, height);
 
-  const prompt = `A ${roomPromptHint}. ${stylePrompt}. The room contains ONLY the furniture listed above — nothing else. Each piece of furniture is placed with correct perspective, realistic shadows, and natural lighting matching the room. The walls, windows, doors, floor, and ceiling are unchanged. Professional real estate photography, 4K, photorealistic.`;
+  const prompt = `A ${roomPromptHint}. ${stylePrompt}. The room contains ONLY the furniture listed above — nothing else. Each piece of furniture is placed with correct perspective, realistic shadows, and natural lighting matching the room. The walls, windows (including all window frames and joinery), doors, floor, and ceiling are unchanged. NEVER generate any text, letters, words, numbers, or written content anywhere in the image. Professional real estate photography, 4K, photorealistic.`;
 
   return replicateRunWithRetry("black-forest-labs/flux-fill-pro", {
     image: cleanImageUrl,
@@ -178,21 +182,52 @@ async function stageRoom(
  */
 async function polishStagedRoom(imageUrl: string, roomType: string): Promise<string> {
   return fluxEdit(imageUrl,
-    `CRITICAL: Do NOT change the room structure, walls, floor, stairs, or furniture layout. Only make these small fixes:
+    `CRITICAL: Do NOT change the room structure, walls, windows (including frames and joinery), floor, stairs, or furniture layout. Only make these small fixes:
 
 1. PAINTINGS/ART: If any painting or framed art is on the floor or leaning against a wall — hang it on the wall at eye level. Artworks must be wall-mounted.
 
 2. CEILING LIGHT: If no ceiling light is visible — add one modern flush-mount or pendant light on the ceiling.
 
-That is all. Do NOT move furniture, do NOT modify walls, do NOT add or remove doors, do NOT change anything else. The room must look identical except for the two fixes above.`
+NEVER generate any text, letters, words, numbers, or written content anywhere in the image. No text of any kind.
+
+That is all. Do NOT move furniture, do NOT modify walls or window frames, do NOT add or remove doors, do NOT change anything else. The room must look identical except for the two fixes above.`
   );
 }
 
 /**
- * Three-step virtual staging pipeline:
+ * Step 4: AI upscale to restore original resolution.
+ * Uses Real-ESRGAN for high-quality upscaling, then sharp resizes to exact original dimensions.
+ */
+async function upscaleToOriginal(
+  imageUrl: string,
+  origWidth: number,
+  origHeight: number
+): Promise<string> {
+  // Determine needed scale factor (2x or 4x)
+  const { width: currentWidth } = await getImageDimensions(imageUrl);
+  const scaleFactor = origWidth / currentWidth;
+
+  // Only upscale if the result is significantly smaller than original
+  if (scaleFactor <= 1.1) return imageUrl;
+
+  const upscaledUrl = await replicateRunWithRetry(
+    "nightmareai/real-esrgan:f121d640bd286e1fdc67f9799164c1d5be36ff74576ee11c803ae5b665dd46aa",
+    {
+      image: imageUrl,
+      scale: scaleFactor <= 2 ? 2 : 4,
+      face_enhance: false,
+    }
+  );
+
+  return upscaledUrl;
+}
+
+/**
+ * Virtual staging pipeline:
  * 1. Flux Kontext Pro cleans the room + finishes surfaces
  * 2. FLUX Fill Pro inpaints furniture
  * 3. Flux Kontext Pro polishes staging (fixes paintings, lights, doors)
+ * 4. Real-ESRGAN upscales to original resolution
  * Set DEMO_MODE=true in .env.local to skip API calls.
  */
 /**
@@ -201,7 +236,7 @@ That is all. Do NOT move furniture, do NOT modify walls, do NOT add or remove do
  */
 export async function refineImage(imageUrl: string, refinementPrompt: string): Promise<string> {
   return fluxEdit(imageUrl,
-    `CRITICAL: Do NOT change the room structure, walls, windows, or floor. Apply ONLY the following correction to this staged room photo:
+    `CRITICAL: Do NOT change the room structure, walls, windows (including frames and joinery), or floor. NEVER generate any text, letters, words, or numbers in the image. Apply ONLY the following correction to this staged room photo:
 
 ${refinementPrompt}
 
@@ -213,6 +248,8 @@ export async function generateStagedImage({
   imageUrl,
   style,
   roomType,
+  origWidth,
+  origHeight,
   customPrompt,
 }: GenerateInput): Promise<string> {
   if (DEMO_MODE) {
@@ -231,5 +268,10 @@ export async function generateStagedImage({
   await wait(3000);
 
   // Step 3: Polish — fix paintings, ceiling light, doors
-  return polishStagedRoom(stagedImageUrl, roomType);
+  const polishedUrl = await polishStagedRoom(stagedImageUrl, roomType);
+
+  await wait(3000);
+
+  // Step 4: AI upscale to original resolution
+  return upscaleToOriginal(polishedUrl, origWidth, origHeight);
 }

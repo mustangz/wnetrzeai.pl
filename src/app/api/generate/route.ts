@@ -43,15 +43,17 @@ export async function POST(request: NextRequest) {
       imageUrl: dataUri,
       style: style.prompt,
       roomType: roomType.promptHint,
+      origWidth,
+      origHeight,
       customPrompt,
     });
 
-    // Resize generated image to match original dimensions
+    // Final exact resize to match original dimensions (upscaler may overshoot slightly)
     const resultResponse = await fetch(resultUrl);
     const resultBuffer = Buffer.from(await resultResponse.arrayBuffer());
     const resizedBuffer = await sharp(resultBuffer)
       .resize(origWidth, origHeight, { fit: "cover" })
-      .jpeg({ quality: 90 })
+      .jpeg({ quality: 92 })
       .toBuffer();
 
     const resizedBase64 = resizedBuffer.toString("base64");
