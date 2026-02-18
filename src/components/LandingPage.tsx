@@ -6,9 +6,9 @@ import BeforeAfter from "@/components/BeforeAfter";
 
 // A/B/C pricing variants
 const pricingVariants = {
-  A: { starter: 49, pro: 99, agency: 199 },
-  B: { starter: 69, pro: 129, agency: 249 },
-  C: { starter: 99, pro: 199, agency: 299 },
+  A: { starter: 59, pro: 149, agency: 349 },
+  B: { starter: 79, pro: 179, agency: 449 },
+  C: { starter: 99, pro: 249, agency: 549 },
 } as const;
 
 type Variant = keyof typeof pricingVariants;
@@ -646,10 +646,10 @@ export default function LandingPage({ defaultTheme = "dark" }: { defaultTheme?: 
                   <span className="text-4xl font-bold">{getPrice(prices.agency)}</span>
                   <span className="text-text-tertiary">PLN/mies</span>
                 </div>
-                <p className="text-xs text-text-muted mt-1">{(getPrice(prices.agency) / 300).toFixed(2).replace(".", ",")} PLN za render</p>
+                <p className="text-xs text-text-muted mt-1">{(getPrice(prices.agency) / 150).toFixed(2).replace(".", ",")} PLN za render</p>
               </div>
               <ul className="space-y-3 mb-8 flex-grow">
-                {[<><strong className="text-text-primary" key="r">300 renderów</strong> miesięcznie</>, "Najszybsza kolejka", "Nieograniczone poprawki", "Priorytetowe wsparcie", "Faktura VAT"].map((f, i) => (
+                {[<><strong className="text-text-primary" key="r">150 renderów</strong> miesięcznie</>, "Najszybsza kolejka", "Nieograniczone poprawki", "Priorytetowe wsparcie", "Faktura VAT"].map((f, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm"><CheckIcon /><span>{f}</span></li>
                 ))}
               </ul>
