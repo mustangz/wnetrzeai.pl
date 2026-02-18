@@ -646,10 +646,10 @@ export default function LandingPage({ defaultTheme = "dark" }: { defaultTheme?: 
                   <span className="text-4xl font-bold">{getPrice(prices.agency)}</span>
                   <span className="text-text-tertiary">PLN/mies</span>
                 </div>
-                <p className="text-xs text-text-muted mt-1">{(getPrice(prices.agency) / 150).toFixed(2).replace(".", ",")} PLN za render</p>
+                <p className="text-xs text-text-muted mt-1">{(getPrice(prices.agency) / 100).toFixed(2).replace(".", ",")} PLN za render</p>
               </div>
               <ul className="space-y-3 mb-8 flex-grow">
-                {[<><strong className="text-text-primary" key="r">150 renderów</strong> miesięcznie</>, "Najszybsza kolejka", "Nieograniczone poprawki", "Priorytetowe wsparcie", "Faktura VAT"].map((f, i) => (
+                {[<><strong className="text-text-primary" key="r">100 renderów</strong> miesięcznie</>, "Najszybsza kolejka", "Nieograniczone poprawki", "Priorytetowe wsparcie", "Faktura VAT"].map((f, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm"><CheckIcon /><span>{f}</span></li>
                 ))}
               </ul>
